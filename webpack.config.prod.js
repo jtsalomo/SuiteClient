@@ -1,7 +1,6 @@
 // For info about this file refer to webpack and webpack-hot-middleware documentation
 // For info on how we're generating bundles with hashed filenames for cache busting: https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w99i89nsz
 import webpack from 'webpack';
-import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import WebpackMd5Hash from 'webpack-md5-hash';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -76,8 +75,8 @@ export default {
   ],
   module: {
     loaders: [
-      {test: /(\.js|\.jsx)$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
-      {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader?sourceMap', 'css-loader?sourceMap!postcss-loader')},
+      {test: /(\.js|\.jsx)$/, exclude:/node_modules/, loader: 'babel'},
+      {test: /(\.css|\.scss)$/, loader: ExtractTextPlugin.extract(['css?sourceMap!sass?sourceMap!postcss'])},
       {test: /\.ico(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?mimetype=image/x-icon'},
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
       {test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000'},
@@ -86,11 +85,9 @@ export default {
       {test: /\.(jpe?g|png|gif)$/i, loaders: ['file?name=[path][name].[ext]?[hash]']}
     ]
   },
-  postcss: function (webpack) {
+  postcss: function () {
     return [
-      require('postcss-import')({addDependencyTo: webpack}),
-      require('postcss-url')(),
-      require('postcss-cssnext')({
+      require('autoprefixer')({
         browsers: 'last 3 versions, > 1%'
       })
     ];

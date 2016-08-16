@@ -19,7 +19,7 @@ const UtilitiesExample = () => {
         </figure>
       </Panel>
 
-      <Panel heade="Width">
+      <Panel header="Width">
         <figure className="highlight"><pre><code className="language-css"
                                                  data-lang="css">.w-sm {'{'} width: 25% !important; {'}\n'}
           .w-md {'{'} width: 50% !important; {'}\n'}

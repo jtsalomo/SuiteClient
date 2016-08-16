@@ -4,67 +4,64 @@
  *
  */
 
-:root {
-  /* Step Indicators
+/* Step Indicators
     ------------------------------------------------ */
-  --tracker-margin-bottom: 24px;
-  --tracker-step-color: #fff;
-  --tracker-step-background: #c7cbca;
-}
+$tracker-margin-bottom: 24px;
+$tracker-step-color: #fff;
+$tracker-step-background: #c7cbca;
 
 ul.tracker {
   display: table;
   width: 100%;
   padding: 0;
-  margin-bottom: var(--tracker-margin-bottom);
+  margin-bottom: $tracker-margin-bottom;
   min-height: 68px;
 
-  & li {
+  li {
     display: table-cell;
     text-align: center;
     position: relative;
 
-    & .tracker-step {
+    .tracker-step {
       width: 36px;
       height: 36px;
       margin: 0 auto;
       text-align: center;
-      background-color: var(--tracker-step-background);
-      border: 3px solid var(--body-bg);
+      background-color: $tracker-step-background;
+      border: 3px solid $body-bg;
       border-radius: 30px;
       line-height: 30px;
       position: relative;
-      color: var(--tracker-step-color);
+      color: $tracker-step-color;
       z-index: 1;
     }
 
-    & .tracker-label {
+    .tracker-label {
       position: absolute;
       left: 0;
       right: 0;
       margin-top: 10px;
-      color: var(--gray-light);
+      color: $gray-light;
     }
 
     &::after {
       content: '';
       position: absolute;
       width: 100%;
-      background-color: var(--gray-lighter);
+      background-color: $gray-lighter;
       height: 5px;
       left: 0;
       top: 15px;
     }
   }
 
-  & .tracker-complete {
-
-    & .tracker-label {
-      color: var(--gray-light);
+  .tracker-complete {
+    .tracker-label {
+      color: $gray-light;
     }
 
-    & .tracker-step {
-      background-color: var(--brand-success);
+    .tracker-step {
+      background-color: $brand-success;
       position: relative;
 
       &::before {
@@ -76,30 +73,30 @@ ul.tracker {
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        background-color: var(--brand-success);
+        background-color: $brand-success;
       }
     }
   }
 
-  & .tracker-active {
-    & .tracker-label {
-      color: var(--brand-primary);
+  .tracker-active {
+    .tracker-label {
+      color: $brand-primary;
     }
 
-    & .tracker-step {
-      background-color: var(--brand-primary);
+    .tracker-step {
+      background-color: $brand-primary;
     }
   }
 }
 
-@media (--maxwidth-screen-xs) {
+@media (max-width: $screen-xs-max) {
   ul.tracker .tracker-label {
     display: none;
   }
 }
 
-@media (--maxwidth-screen-sm) {
+@media (max-width: $screen-sm-max) {
   ul.tracker .tracker-label {
-    font-size: var(--font-size-small);
+    font-size: $font-size-small;
   }
 }

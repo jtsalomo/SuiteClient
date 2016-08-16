@@ -3,7 +3,7 @@ import React from 'react';
 import {PageHeader, Panel, Well, Button, Row, Col} from 'react-bootstrap';
 import {AreaGraph, BarGraph, LineGraph, PieChart, ScatterPlot} from 'react-d3-responsive';
 
-import chartData from '../../data/chartsData';
+import chartData from '../../data/chartData';
 
 const ChartsPage = () => {
   return (

@@ -26,22 +26,22 @@ const TableExample = () => {
           <tr className="success">
             <td>3</td>
             <td>Success</td>
-            <td></td>
+            <td>&nbsp;</td>
           </tr>
           <tr className="danger">
             <td>4</td>
             <td>Danger</td>
-            <td></td>
+            <td>&nbsp;</td>
           </tr>
           <tr className="warning">
             <td>5</td>
             <td>Warning</td>
-            <td></td>
+            <td>&nbsp;</td>
           </tr>
           <tr className="active">
             <td>6</td>
             <td>Active</td>
-            <td></td>
+            <td>&nbsp;</td>
           </tr>
         </tbody>
       </Table>

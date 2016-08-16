@@ -42,6 +42,7 @@
   &__bottom .navbar-nav > li > a {
     color: #fff;
   }
+
   &__bottom .navbar-nav > li > a:hover {
     background-color: var(--brand-primary);
     color: #fff;
@@ -71,14 +72,14 @@
 
 /* Non-Flexbox Solution for Sidebar/Content/Aside */
 
-@media(--maxwidth-screen-xs) {
+@media (max-width: $screen-xs-max) {
   .template-navigation__bottom,
   .template-navigation__top {
     padding: 0;
   }
 }
 
-@media(--minwidth-screen-sm) {
+@media (min-width: $screen-sm-min) {
   .sidebar__fixed {
     width: inherit;
     max-width: 256px;
@@ -86,6 +87,7 @@
     min-height: 100%;
     position: relative;
   }
+
   .content__fluid {
     width: calc(100% - 256px);
   }

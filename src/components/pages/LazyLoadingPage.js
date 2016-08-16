@@ -20,67 +20,67 @@ const LazyLoadingPage = () => {
         <img src={require('../../../assets/images/vehicles/vehicle2.jpg')} style={{width:'100%', height:'auto'}} />
       </Panel>
       <Panel>
-        <LazyLoad overflow={true}>
+        <LazyLoad overflow={true} height={'100%'}>
           <img src={require('../../../assets/images/vehicles/vehicle3.jpg')} style={{width:'100%', height:'auto'}} />
         </LazyLoad>
       </Panel>
        <Panel>
-        <LazyLoad overflow={true}>
+        <LazyLoad overflow={true} height={'100%'}>
           <img src={require('../../../assets/images/vehicles/vehicle4.jpg')} style={{width:'100%', height:'auto'}} />
         </LazyLoad>
       </Panel>
       <Panel>
-        <LazyLoad overflow={true} once={true}>
+        <LazyLoad overflow={true} once={true} height={'100%'}>
           <img src={require('../../../assets/images/vehicles/vehicle5.jpg')} style={{width:'100%', height:'auto'}} />
         </LazyLoad>
       </Panel>
       <Panel>
-        <LazyLoad overflow={true} once={true}>
+        <LazyLoad overflow={true} once={true} height={'100%'}>
           <img src={require('../../../assets/images/vehicles/vehicle6.jpg')} style={{width:'100%', height:'auto'}} />
         </LazyLoad>
       </Panel>
       <Panel>
-        <LazyLoad overflow={true} once={true}>
+        <LazyLoad overflow={true} once={true} height={'100%'}>
           <img src={require('../../../assets/images/vehicles/vehicle7.jpg')} style={{width:'100%', height:'auto'}} />
         </LazyLoad>
       </Panel>
       <Panel>
-        <LazyLoad overflow={true} once={true}>
+        <LazyLoad overflow={true} once={true} height={'100%'}>
           <img src={require('../../../assets/images/vehicles/vehicle8.jpg')} style={{width:'100%', height:'auto'}} />
         </LazyLoad>
       </Panel>
       <Panel>
-        <LazyLoad overflow={true} once={true}>
+        <LazyLoad overflow={true} once={true} height={'100%'}>
           <img src={require('../../../assets/images/vehicles/vehicle9.jpg')} style={{width:'100%', height:'auto'}} />
         </LazyLoad>
       </Panel>
       <Panel>
-        <LazyLoad overflow={true} once={true}>
+        <LazyLoad overflow={true} once={true} height={'100%'}>
           <img src={require('../../../assets/images/vehicles/vehicle10.jpg')} style={{width:'100%', height:'auto'}} />
         </LazyLoad>
       </Panel>
       <Panel>
-        <LazyLoad overflow={true} once={true}>
+        <LazyLoad overflow={true} once={true} height={'100%'}>
           <img src={require('../../../assets/images/vehicles/vehicle11.jpg')} style={{width:'100%', height:'auto'}} />
         </LazyLoad>
       </Panel>
       <Panel>
-        <LazyLoad overflow={true} once={true}>
+        <LazyLoad overflow={true} once={true} height={'100%'}>
           <img src={require('../../../assets/images/vehicles/vehicle12.jpg')} style={{width:'100%', height:'auto'}} />
         </LazyLoad>
       </Panel>
       <Panel>
-        <LazyLoad overflow={true} once={true}>
+        <LazyLoad overflow={true} once={true} height={'100%'}>
           <img src={require('../../../assets/images/vehicles/vehicle13.jpg')} style={{width:'100%', height:'auto'}} />
         </LazyLoad>
       </Panel>
       <Panel>
-        <LazyLoad overflow={true} once={true}>
+        <LazyLoad overflow={true} once={true} height={'100%'}>
           <img src={require('../../../assets/images/vehicles/vehicle14.jpg')} style={{width:'100%', height:'auto'}} />
         </LazyLoad>
       </Panel>
       <Panel>
-        <LazyLoad overflow={true} once={true}>
+        <LazyLoad overflow={true} once={true} height={'100%'}>
           <img src={require('../../../assets/images/vehicles/vehicle15.jpg')} style={{width:'100%', height:'auto'}} />
         </LazyLoad>
       </Panel>

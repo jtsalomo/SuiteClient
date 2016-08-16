@@ -14,7 +14,7 @@
   }
 }
 
-@media (--maxwidth-screen-sm) {
+@media (max-width: $screen-sm-max) {
   .vo__labels {
     position: static;
   }

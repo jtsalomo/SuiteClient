@@ -1,6 +1,5 @@
 // For info about this file refer to webpack and webpack-hot-middleware documentation
 import webpack from 'webpack';
-import path from 'path';
 import NpmInstallPlugin from 'npm-install-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import StyleLintPlugin from 'stylelint-webpack-plugin';
@@ -23,7 +22,10 @@ export default {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new StyleLintPlugin({files: '**/*.css'}),
+    new StyleLintPlugin({
+      files: '**/*.s?(a|c)ss',
+      syntax: 'scss'
+    }),
 
     // Create HTML file that includes references to bundled CSS and JS.
     new HtmlWebpackPlugin({
@@ -44,8 +46,8 @@ export default {
   ],
   module: {
     loaders: [
-      {test: /(\.js|\.jsx)$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
-      {test: /\.css$/, loader: 'style-loader?sourceMap!css-loader?sourceMap!postcss-loader'},
+      {test: /(\.js|\.jsx)$/, exclude:/node_modules/, loader: 'babel'},
+      {test: /(\.css|\.scss)$/, loader: 'style!css?sourceMap!postcss!sass?sourceMap'},
       {test: /\.ico(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?mimetype=image/x-icon'},
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
       {test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000'},
@@ -54,11 +56,9 @@ export default {
       {test: /\.(jpe?g|png|gif)$/i, loaders: ['file']}
     ]
   },
-  postcss: function (webpack) {
+  postcss: function () {
     return [
-      require('postcss-import')({addDependencyTo: webpack}),
-      require('postcss-url')(),
-      require('postcss-cssnext')({
+      require('autoprefixer')({
         browsers: 'last 3 versions, > 1%'
       })
     ];

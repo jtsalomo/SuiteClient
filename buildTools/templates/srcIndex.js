@@ -6,7 +6,7 @@ import configureStore from './store/configureStore'; // eslint-disable-line impo
 import HomePage from './components/pages/HomePage';
 
 import 'fusion-theme/dist/fusion-theme.min.css'; // eslint-disable-line
-import './styles/index.css';
+import './styles/index.scss';
 
 const store = configureStore();
 

@@ -33,7 +33,7 @@ const OrganismsPage = () => {
             <tr>
               <td>labels</td>
               <td>array</td>
-              <td></td>
+              <td>&nbsp;</td>
               <td>Labels for each step. Minimum 3, maximum 5.</td>
             </tr>
             <tr>
@@ -45,14 +45,14 @@ const OrganismsPage = () => {
             <tr>
               <td>id</td>
               <td>string</td>
-              <td></td>
-              <td></td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
             </tr>
             <tr>
               <td>className</td>
               <td>string</td>
-              <td></td>
-              <td></td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
             </tr>
           </tbody>
         </Table>
@@ -82,20 +82,20 @@ const OrganismsPage = () => {
             <tr>
               <td>vehicleData</td>
               <td>object</td>
-              <td></td>
+              <td>&nbsp;</td>
               <td>A JSON formatted object of the vehicle info to be handled by the component.</td>
             </tr>
             <tr>
               <td>id</td>
               <td>string</td>
-              <td></td>
-              <td></td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
             </tr>
             <tr>
               <td>className</td>
               <td>string</td>
-              <td></td>
-              <td></td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
             </tr>
           </tbody>
         </Table>

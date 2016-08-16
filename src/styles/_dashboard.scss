@@ -29,13 +29,13 @@ button:focus {
   padding: 0 15px;
 }
 
-@media(--maxwidth-screen-sm) {
+@media (max-width: $screen-sm-max) {
   .page-wrapper {
-    left: 58px;
+    left: 116px;
   }
 }
 
-@media(--minwidth-screen-sm) {
+@media (min-width: $screen-sm-min) {
   .page-wrapper {
     padding: 0 30px;
   }

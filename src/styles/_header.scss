@@ -6,7 +6,7 @@
  */
 
 .header-bar {
-  background-color: var(--brand-cox);
+  background-color: $brand-cox;
   background-image: none;
   box-shadow: none;
   margin-bottom: 0;
@@ -28,7 +28,7 @@
 
   & &__nav-header {
     float: left;
-    color: var(--gray-lightest);
+    color: $gray-lightest;
     user-select: none;
   }
 
@@ -41,7 +41,7 @@
 
   & .navbar-header &__nav-brand,
   & &__nav-brand:hover {
-    color: var(--gray-lightest);
+    color: $gray-lightest;
   }
 
   &__nav-brand > img {
@@ -53,12 +53,12 @@
   }
 
   & &__nav-right > li.dropdown > a {
-    color: var(--gray-lightest);
+    color: $gray-lightest;
   }
 
   & &__nav-right > li.open.dropdown > a {
-    background-color: var(--brand-primary);
-    color: var(--gray-lightest);
+    background-color: $brand-primary;
+    color: $gray-lightest;
   }
 
   &__nav-right > li {
@@ -66,14 +66,14 @@
   }
 
   & &__nav-right > li > a {
-    color: var(--gray-lightest);
+    color: $gray-lightest;
   }
 
   & &__nav-right > li > a:hover {
-    color: var(--gray-lightest);
+    color: $gray-lightest;
   }
 
-  @media (--maxwidth-screen-xs) {
+  @media (max-width: $screen-xs-max) {
     &__nav-brand > img {
       display: none;
     }

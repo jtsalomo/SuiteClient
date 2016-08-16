@@ -17,7 +17,7 @@
 
   &-percent {
     height: 2px;
-    background: var(--brand-cox);
+    background: $brand-cox;
   }
 
   &-position-relative {
@@ -29,12 +29,12 @@
     height: 6px;
   }
 
-  &-position-relative > .react-progress-bar {
+  &-position-relative > & {
     position: absolute;
     text-align: left;
   }
-}
 
-.react-progress-bar-toolbar {
-  display: inline-block;
+  &-toolbar {
+    display: inline-block;
+  }
 }

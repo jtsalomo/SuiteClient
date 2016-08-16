@@ -31,7 +31,7 @@
 .datepicker-days .day:hover,
 .datepicker-months .month:hover,
 .datepicker-years .year:hover {
-  color: var(--brand-primary);
+  color: $brand-primary;
 }
 
 .datepicker {
@@ -77,6 +77,6 @@
 .datepicker-days .day.active,
 .datepicker-years .year.active,
 .datepicker-months .month.active {
-  color: var(--brand-primary);
+  color: $brand-primary;
   font-weight: bold;
 }

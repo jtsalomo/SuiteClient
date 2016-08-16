@@ -1,4 +1,4 @@
-module.exports = {
+const chartData = {
   "lineGraphData": [
     {
       "day":"02-11-2016",
@@ -1163,3 +1163,5 @@ module.exports = {
     158,93,20,120,187,45
   ]
 };
+
+export default chartData;
