@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Col, Panel } from 'react-bootstrap';
 
+import { actionButtons } from '../widgets/ActionBarConfig';
 import ActionBar from '../widgets/ActionBar';
 
 const HomePage = () => {
@@ -17,8 +18,9 @@ const HomePage = () => {
           </div>
         </Panel>
       </Col>
-
-      <ActionBar />
+      <Col sm={12} md={12} lg={12}>
+        <ActionBar actionButtons={actionButtons}/>
+      </Col>
 
     </Grid>
   );
