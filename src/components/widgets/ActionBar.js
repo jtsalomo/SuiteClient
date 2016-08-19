@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {Component, PropTypes} from 'react';
 import FontAwesome from 'react-fontawesome';
 import { ButtonToolbar, ButtonGroup, Button, Panel } from 'react-bootstrap';
@@ -97,3 +98,16 @@ ActionBar.propTypes = {
 ActionBar.defaultProps = {};
 
 export default ActionBar;
+=======
+/* eslint-disable react/no-multi-comp */
+import React, {PropTypes} from 'react';
+
+const ActionBar = () => {
+  return (
+    <em>Action bar goes here.</em>
+  );
+};
+
+export default ActionBar;
+/* eslint-enable react/no-multi-comp */
+>>>>>>> da6d15bc2efb4c29cd083f40921b7100772c25ea
