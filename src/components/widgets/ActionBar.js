@@ -1,7 +1,8 @@
-<<<<<<< HEAD
 import React, {Component, PropTypes} from 'react';
 import FontAwesome from 'react-fontawesome';
 import { ButtonToolbar, ButtonGroup, Button, Panel } from 'react-bootstrap';
+
+import { actionButtons } from '../widgets/ActionBarConfig';
 
 class ActionBar extends Component {
   constructor(props){
@@ -37,7 +38,7 @@ class ActionBar extends Component {
       if(isVisible === v.overflow){
         const openActionsPanel = self.openActionsPanel.bind(self, key);
         return(
-          <Button key={key} bsStyle="link" className="action-bar__button" onClick={openActionsPanel}>
+          <Button key={key} className="action-bar__button" onClick={openActionsPanel}>
             <FontAwesome name={v.icon} fixedWidth={true} />
             <span className='hidden-xs'>{v.label}</span>
           </Button>
@@ -71,17 +72,20 @@ class ActionBar extends Component {
 
     return (
       <div className="action-bar">
+
         <ButtonToolbar className="action-bar__btn-toolbar">
           {visibleActionButtons}
           <div className="action-bar__action-overflow" onClick={this.openAdditionalActions}>
-            <Button bsStyle="link" >
+            <Button className="action-bar__button" >
               <FontAwesome name='ellipsis-v' fixedWidth={true} />
             </Button>
           </div>
         </ButtonToolbar>
+
         <ButtonToolbar className="action-bar__btn-toolbar">
           {hiddenActionButtons}
         </ButtonToolbar>
+
         <Panel className="actions-panel" collapsible expanded={this.state.showIndividualActionPanel}>
           <div>
           {doActionPanel}
@@ -95,19 +99,8 @@ class ActionBar extends Component {
 ActionBar.propTypes = {
   actionButtons: PropTypes.object
 };
-ActionBar.defaultProps = {};
-
-export default ActionBar;
-=======
-/* eslint-disable react/no-multi-comp */
-import React, {PropTypes} from 'react';
-
-const ActionBar = () => {
-  return (
-    <em>Action bar goes here.</em>
-  );
+ActionBar.defaultProps = {
+  actionButtons: actionButtons
 };
 
 export default ActionBar;
-/* eslint-enable react/no-multi-comp */
->>>>>>> da6d15bc2efb4c29cd083f40921b7100772c25ea
