@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import FontAwesome from 'react-fontawesome';
 import { ButtonToolbar, ButtonGroup, Button, Panel } from 'react-bootstrap';
 
-import { actionButtons } from '../widgets/ActionBarConfig';
+import { actionSelections } from '../widgets/ActionBarConfig';
 
 class ActionBar extends Component {
   constructor(props){
@@ -82,7 +82,7 @@ class ActionBar extends Component {
           </div>
         </ButtonToolbar>
 
-        <ButtonToolbar className="action-bar__btn-toolbar">
+        <ButtonToolbar bsStyle="link" className="action-bar__btn-toolbar">
           {hiddenActionButtons}
         </ButtonToolbar>
 
@@ -97,10 +97,10 @@ class ActionBar extends Component {
 }
 
 ActionBar.propTypes = {
-  actionButtons: PropTypes.object
+  actionButtons: PropTypes.array
 };
 ActionBar.defaultProps = {
-  actionButtons: actionButtons
+  actionButtons: actionSelections
 };
 
 export default ActionBar;

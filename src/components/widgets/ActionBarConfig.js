@@ -1,7 +1,7 @@
 import React from 'react';
 import TestActionWidget from './TestActionWidget';
 
-export const actionButtons = [
+export const actionSelections = [
   {label: 'Add Lead', icon: 'bullseye', overflow: 'visible', actionMethod: 'collapsiblePanel', actionComponent: <TestActionWidget/>},
   {label: 'Add Service Appt.', icon: 'wrench', overflow: 'visible', actionMethod: 'collapsiblePanel', actionComponent: <TestActionWidget/>},
   {label: 'Generate Offer', icon: 'tag', overflow: 'visible', actionMethod: 'collapsiblePanel', actionComponent: <TestActionWidget/>},
