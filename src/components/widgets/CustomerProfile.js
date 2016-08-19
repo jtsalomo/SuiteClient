@@ -1,6 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 import React, {PropTypes} from 'react';
-import { Media, Row, Col, Image, Button, ButtonToolbar, Modal } from 'react-bootstrap';
+import { Media, Row, Col, Image, Button, Modal } from 'react-bootstrap';
 
 /*
   Customer Profile component.
@@ -15,6 +15,31 @@ import { Media, Row, Col, Image, Button, ButtonToolbar, Modal } from 'react-boot
       - a value of '0' will set all to grey/'incomplete'
     id (optional)
       - set the id attribute of the <ul class="tracker">
+
+    photo (string)
+      - a URL/path to profile pick.
+    nameFirst (string) - required
+      - customer's first name
+    nameLast (string) - required
+      - customer's last name
+    phone (string || number)
+      - phone number.  Currently accepts strings or numbers, will output exactly as input (no formatting built-in)
+    email (string)
+      - email address
+    address1 (string)
+      - street address
+    address2 (string)
+      - additional street address needs (PO box, apt #, etc.)
+    city (string)
+    state (string)
+    postal (number)
+    ebr (bool)
+      - CASL, Set up for EBR (yes/no)
+    ebr_expressConsent (bool)
+      - CASL, customer allows marketing
+    memo (string)
+      - memo/notes about customer
+
 */
 
 // const CustomerProfile = (props) => {
@@ -71,7 +96,7 @@ class CustomerProfile extends React.Component {
                   <li>{this.props.address2}</li>
                   : null }
                   <li>{this.props.city+', '+this.props.state+' '+this.props.postal}</li>
-                  <li><small>EBR: {(this.props.ebr)?'YES':'NO'} Express Consent: {(this.props.ebr_expressConsent)?'YES':'NO'}</small></li>
+                  <li><small><span>EBR: {(this.props.ebr)?'YES':'NO'}</span> <span style={{'marginLeft':'1em'}}>Express Consent: {(this.props.ebr_expressConsent)?'YES':'NO'}</span></small></li>
                 </Col>
                 <Col lg={9} md={6} sm={6} xs={6} className="customerprofile__memo">
                   <h5 className="customerprofile__memo-heading m-t-0">Customer Memo</h5>
@@ -135,10 +160,8 @@ const CustomerNameEditModal = (props) =>
         Last Name: {props.content[1]}</p>
     </Modal.Body>
     <Modal.Footer>
-      <ButtonToolbar>
-        <Button onClick={props.onHide}>Cancel</Button>
-        <Button onClick={props.onHide} bsStyle="primary">Confirm</Button>
-      </ButtonToolbar>
+      <Button onClick={props.onHide}>Cancel</Button>
+      <Button onClick={props.onHide} bsStyle="primary">Confirm</Button>
     </Modal.Footer>
   </Modal>;
 
@@ -156,10 +179,8 @@ const CustomerMemoEditModal = (props) =>
       <p>[editor goes here]</p>
     </Modal.Body>
     <Modal.Footer>
-      <ButtonToolbar>
-        <Button onClick={props.onHide}>Cancel</Button>
-        <Button onClick={props.onHide} bsStyle="primary">Confirm</Button>
-      </ButtonToolbar>
+      <Button onClick={props.onHide}>Cancel</Button>
+      <Button onClick={props.onHide} bsStyle="primary">Confirm</Button>
     </Modal.Footer>
   </Modal>;
 
@@ -177,10 +198,8 @@ const CustomerMemoViewModal = (props) =>
       <p>{props.content}</p>
     </Modal.Body>
     <Modal.Footer>
-      <ButtonToolbar>
-        <Button onClick={props.onHide}>Cancel</Button>
-        <Button onClick={props.onHide} bsStyle="primary">Confirm</Button>
-      </ButtonToolbar>
+      <Button onClick={props.onHide}>Cancel</Button>
+      <Button onClick={props.onHide} bsStyle="primary">Confirm</Button>
     </Modal.Footer>
   </Modal>;
 

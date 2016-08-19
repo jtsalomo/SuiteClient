@@ -1,5 +1,5 @@
 /* eslint-disable react/no-multi-comp */
-import React, {PropTypes} from 'react';
+import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 const EnterpriseDealerNav = () => {
