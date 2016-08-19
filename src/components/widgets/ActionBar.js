@@ -82,7 +82,9 @@ class ActionBar extends Component {
           {hiddenActionButtons}
         </ButtonToolbar>
         <Panel className="actions-panel" collapsible expanded={this.state.showIndividualActionPanel}>
-        {doActionPanel}
+          <div>
+          {doActionPanel}
+            </div>
         </Panel>
       </div>
     );
