@@ -1,0 +1,59 @@
+$customerprofile : '.customerprofile'; // namespace for component
+
+body { height: 2000px; }
+
+#{$customerprofile} {
+  // copy .panel styles
+  background-color: $panel-bg;
+  border: 1px solid transparent;
+  border-radius: $panel-border-radius;
+  box-sizing: border-box;
+  border-color: $panel-default-border;
+  border-radius: 0;
+  box-shadow: none;
+  // padding from panel-body
+  padding: 0;
+  margin: 0;
+  transition: all 0.5s;
+
+  &__media {
+    padding: $panel-body-padding;
+  }
+
+  &__photo {
+    width: 13.5%;
+  }
+
+  &__img {
+    max-width: 160px;
+    min-width: 36px;
+    width: 100%;
+  }
+
+  &__heading {
+    border-bottom: solid 1px $panel-default-border;
+  }
+
+  // collapses when affixed to page
+  &--collapsed {
+    #{$customerprofile} {
+      &__media {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      &__photo {
+        width: 36px;
+      }
+
+      &__heading {
+        margin: 0;
+        border-color: transparent;
+      }
+
+      &__info {
+        display: none;
+      }
+    }
+  }
+}

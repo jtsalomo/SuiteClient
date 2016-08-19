@@ -1,3 +1,4 @@
+/* eslint-disable react/no-multi-comp */
 import React, {Component, PropTypes} from 'react';
 import FontAwesome from 'react-fontawesome';
 import { ButtonToolbar, ButtonGroup, Button, Panel } from 'react-bootstrap';
