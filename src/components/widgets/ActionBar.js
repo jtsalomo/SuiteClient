@@ -1,9 +1,14 @@
 /* eslint-disable react/no-multi-comp */
-import React, {PropTypes} from 'react';
+import React from 'react';
+import { Button, ButtonGroup } from 'react-bootstrap';
 
 const ActionBar = () => {
   return (
-    <em>Action bar goes here.</em>
+    <ButtonGroup className="actionbar" justified>
+      <Button href="#">ActionBar</Button>
+      <Button href="#">goes</Button>
+      <Button href="#">here...</Button>
+    </ButtonGroup>
   );
 };
 

@@ -4,7 +4,7 @@ const customerinfo = {
     "first": "Kyla",
     "last": "Gonzalez"
   },
-  "phone": 4195553985,
+  "phone": "(419) 555-3985",
   "email": "kgonzalez@gmail.com",
   "address": {
     "street": "5171 Horton",

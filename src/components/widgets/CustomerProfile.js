@@ -1,10 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 import React, {PropTypes} from 'react';
-import { Panel, Media, Row, Col, Image, Button, ButtonToolbar, Modal } from 'react-bootstrap';
-import { AutoAffix } from 'react-overlays';
-
-// placeholder for ActionBar
-import ActionBar from '../widgets/ActionBar';
+import { Media, Row, Col, Image, Button, ButtonToolbar, Modal } from 'react-bootstrap';
 
 /*
   Customer Profile component.
@@ -59,16 +55,14 @@ class CustomerProfile extends React.Component {
 
   render(){
     return (
-      <AutoAffix viewportOffsetTop={0} affixClassName="customerprofile--fixed">
-        <Panel className="customerprofile" footer={<ActionBar/>}>
-
-          <Media className="customerprofile__customer">
+        <div className="customerprofile">
+          <Media className="customerprofile__media">
             <Media.Left className="customerprofile__photo">
-              <Image className="customerprofile__photo" src={this.props.photo} alt="CUSTOMERNAME"/>
+              <Image className="customerprofile__img" src={this.props.photo} alt="CUSTOMERNAME" />
             </Media.Left>
             <Media.Body>
               <Media.Heading className="customerprofile__heading">{this.props.nameFirst+' '+this.props.nameLast} <Button className="customerprofile__edit-link" bsStyle="link" onClick={this.openNameedit}>Edit</Button></Media.Heading>
-              <Row>
+              <Row className="customerprofile__info">
                 <Col lg={3} md={6} sm={6} xs={6} componentClass="ul" className="customerprofile__contactinfo">
                   <li>{this.props.phone}</li>
                   <li>{this.props.email}</li>
@@ -80,28 +74,31 @@ class CustomerProfile extends React.Component {
                   <li><small>EBR: {(this.props.ebr)?'YES':'NO'} Express Consent: {(this.props.ebr_expressConsent)?'YES':'NO'}</small></li>
                 </Col>
                 <Col lg={9} md={6} sm={6} xs={6} className="customerprofile__memo">
-                  <h6 className="customerprofile__memo-heading m-t-0">Customer Memo</h6>
+                  <h5 className="customerprofile__memo-heading m-t-0">Customer Memo</h5>
                   <div className="customerprofile__memo-content">
-                    {/* convert string to HTML? Store markup in data?
-                        Suggest strings, then utility function to convert line breaks (\n) into paragraphs (or line breaks!).
-                        Any other formatting issues? */}
+                    {/*
+                      Convert string to HTML? Store markup in data?
+                      Suggest strings, then utility function to convert line breaks (\n) into paragraphs (or line breaks!).
+                      Any other formatting issues?
+                    */}
                     <p>{this.props.memo}</p>
                   </div>
-                  <ButtonToolbar>
-                    <Button className="customerprofile__edit-link" bsStyle="link" onClick={this.openMemoview}>View</Button>
-                    <Button className="customerprofile__edit-link" bsStyle="link" onClick={this.openMemoedit}>Edit</Button>
-                  </ButtonToolbar>
+                  {/*
+                    <ButtonToolbar>
+                      <Button className="customerprofile__edit-link" bsStyle="link" onClick={this.openMemoview}>View</Button>
+                      <Button className="customerprofile__edit-link" bsStyle="link" onClick={this.openMemoedit}>Edit</Button>
+                    </ButtonToolbar>
+                  */}
+                  <a className="customerprofile__edit-link" onClick={this.openMemoview} href="#">View</a>{' '}
+                  <a className="customerprofile__edit-link" onClick={this.openMemoedit} href="#">Edit</a>
                 </Col>
               </Row>
+              <CustomerNameEditModal show={this.state.nameeditShow} onHide={this.closeNameedit} content={[this.props.nameFirst, this.props.nameLast]}/>
+              <CustomerMemoEditModal show={this.state.memoeditShow} onHide={this.closeMemoedit} content={this.props.memo}/>
+              <CustomerMemoViewModal show={this.state.memoviewShow} onHide={this.closeMemoview} content={this.props.memo}/>
             </Media.Body>
           </Media>
-
-          <CustomerNameEditModal show={this.state.nameeditShow} onHide={this.closeNameedit} content={[this.props.nameFirst, this.props.nameLast]}/>
-          <CustomerMemoEditModal show={this.state.memoeditShow} onHide={this.closeMemoedit} content={this.props.memo}/>
-          <CustomerMemoViewModal show={this.state.memoviewShow} onHide={this.closeMemoview} content={this.props.memo}/>
-
-        </Panel>
-      </AutoAffix>
+        </div>
     );
   }
 }
@@ -138,8 +135,10 @@ const CustomerNameEditModal = (props) =>
         Last Name: {props.content[1]}</p>
     </Modal.Body>
     <Modal.Footer>
-      <Button onClick={props.onHide}>Cancel</Button>
-      <Button onClick={props.onHide} bsStyle="primary">Confirm</Button>
+      <ButtonToolbar>
+        <Button onClick={props.onHide}>Cancel</Button>
+        <Button onClick={props.onHide} bsStyle="primary">Confirm</Button>
+      </ButtonToolbar>
     </Modal.Footer>
   </Modal>;
 
@@ -157,8 +156,10 @@ const CustomerMemoEditModal = (props) =>
       <p>[editor goes here]</p>
     </Modal.Body>
     <Modal.Footer>
-      <Button onClick={props.onHide}>Cancel</Button>
-      <Button onClick={props.onHide} bsStyle="primary">Confirm</Button>
+      <ButtonToolbar>
+        <Button onClick={props.onHide}>Cancel</Button>
+        <Button onClick={props.onHide} bsStyle="primary">Confirm</Button>
+      </ButtonToolbar>
     </Modal.Footer>
   </Modal>;
 
@@ -176,8 +177,10 @@ const CustomerMemoViewModal = (props) =>
       <p>{props.content}</p>
     </Modal.Body>
     <Modal.Footer>
-      <Button onClick={props.onHide}>Cancel</Button>
-      <Button onClick={props.onHide} bsStyle="primary">Confirm</Button>
+      <ButtonToolbar>
+        <Button onClick={props.onHide}>Cancel</Button>
+        <Button onClick={props.onHide} bsStyle="primary">Confirm</Button>
+      </ButtonToolbar>
     </Modal.Footer>
   </Modal>;
 
