@@ -17,42 +17,42 @@ export const actionSelections = {
     {
       label: 'Add Lead',
       icon: <EntypoAddToList />,
-      overflow: 'visible',
+      responsive: {button: '', icon: '', label: 'hidden-xs'},
       actionMethod: 'collapsiblePanel',
       actionComponent: <TestActionWidget/>
     },
     {
       label: 'Add Service Appt.',
       icon: <EntypoTools />,
-      overflow: 'visible',
+      responsive: {button: '', icon: '', label: 'hidden-xs'},
       actionMethod: 'collapsiblePanel',
       actionComponent: <TestActionWidget/>
     },
     {
       label: 'Generate Offer',
       icon: <EntypoPriceTag />,
-      overflow: 'visible',
+      responsive: {button: '', icon: '', label: 'hidden-xs'},
       actionMethod: 'collapsiblePanel',
       actionComponent: <TestActionWidget/>
     },
     {
       label: 'View Attachments',
       icon: <EntypoAttachment />,
-      overflow: 'visible',
+      responsive: {button: '', icon: '', label: 'hidden-xs'},
       actionMethod: 'collapsiblePanel',
       actionComponent: <TestActionWidget/>
     },
     {
       label: 'Show Letters',
       icon: <EntypoMail />,
-      overflow: 'visible',
+      responsive: {button: '', icon: '', label: 'hidden-xs'},
       actionMethod: 'collapsiblePanel',
       actionComponent: <TestActionWidget/>
     },
     {
       label: 'Show Tasks',
       icon: <EntypoOpenBook/>,
-      overflow: 'visible',
+      responsive: {button: '', icon: '', label: 'hidden-xs'},
       actionMethod: 'collapsiblePanel',
       actionComponent: <TestActionWidget/>
     },
@@ -60,43 +60,36 @@ export const actionSelections = {
   actionDropdowns: [
     {
       label: 'AdditionalAction1',
-      overflow: 'hidden',
       actionMethod: 'dropdown',
       actionComponent: <TestActionPopup/>
     },
     {
       label: 'AdditionalAction2',
-      overflow: 'hidden',
       actionMethod: 'dropdown',
       actionComponent: <TestActionPopup/>
     },
     {
       label: 'AdditionalAction3',
-      overflow: 'hidden',
       actionMethod: 'dropdown',
       actionComponent: <TestActionPopup/>
     },
     {
       label: 'AdditionalAction4',
-      overflow: 'hidden',
       actionMethod: 'dropdown',
       actionComponent: <TestActionPopup/>
     },
     {
       label: 'AdditionalAction5',
-      overflow: 'hidden',
       actionMethod: 'dropdown',
       actionComponent: <TestActionPopup/>
     },
     {
       label: 'AdditionalAction6',
-      overflow: 'hidden',
       actionMethod: 'dropdown',
       actionComponent: <TestActionPopup/>
     },
     {
       label: 'AdditionalAction7',
-      overflow: 'hidden',
       actionMethod: 'dropdown',
       actionComponent: <TestActionPopup/>
     },

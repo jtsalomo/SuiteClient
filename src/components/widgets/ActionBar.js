@@ -22,10 +22,11 @@ class ActionBar extends Component {
 
     const doTabs = actionTabs.map(function(v, key){
       const openActionPanel = self.openActionPanel.bind(self, key);
+      const responsiveClass = v.responsive;
       return(
-        <Button key={key} className="action-bar__button" onClick={openActionPanel}>
-          {v.icon}
-          <span className='action-bar__button-label hidden-xs'>{v.label}</span>
+        <Button key={key} className={'action-bar__button ' + responsiveClass.button} onClick={openActionPanel}>
+          <span className={'action-bar__button-icon ' + responsiveClass.icon}>{v.icon}</span>
+          <span className={'action-bar__button-label ' + responsiveClass.label}>{v.label}</span>
         </Button>
       );
     });
@@ -86,7 +87,7 @@ class ActionBar extends Component {
     );
   }
 
-  /* Dialog function*/
+  /* Dialog functions*/
   openActionDialog(key){
     this.setState({
       currentActionKey: key,
