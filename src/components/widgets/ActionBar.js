@@ -1,3 +1,8 @@
+/**
+ * The ActionBar class is used for . . .
+ * @class ActionBar
+ */
+
 /* eslint-disable react/no-multi-comp */
 import React, {Component, PropTypes} from 'react';
 import { EntypoDotsThreeVertical } from 'react-entypo';
@@ -19,13 +24,15 @@ class ActionBar extends Component {
   /* Action Tabs function - cycles through actionSelections.actionTabs from config file for tabs*/
   doActionTabs(){
     const { actionTabs } = this.props;
+    const { currentActionKey, showActionPanel } = this.state;
     const self = this;
 
     const doTabs = actionTabs.map(function(v, key){
       const openActionPanel = self.openActionPanel.bind(self, key);
       const responsiveClass = v.responsive;
+      const tabFocusClass = (showActionPanel & currentActionKey === key) ? 'active' : '';
       return(
-        <Button key={key} className={'action-bar__button ' + responsiveClass.button} onClick={openActionPanel}>
+        <Button key={key} className={'action-bar__button ' + responsiveClass.button + ' ' + tabFocusClass} onClick={openActionPanel}>
           <span className={'action-bar__button-icon ' + responsiveClass.icon}>{v.icon}</span>
           <span className={'action-bar__button-label ' + responsiveClass.label}>{v.label}</span>
         </Button>
