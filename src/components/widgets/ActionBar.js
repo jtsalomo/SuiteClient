@@ -16,6 +16,7 @@ class ActionBar extends Component {
     this.openActionDialog = this.openActionDialog.bind(this);
   }
 
+  /* Action Tabs function - cycles through actionSelections.actionTabs from config file for tabs*/
   doActionTabs(){
     const { actionTabs } = this.props;
     const self = this;
@@ -37,7 +38,7 @@ class ActionBar extends Component {
     );
   }
 
-  /* Panel functions*/
+  /* Action Panel functions - 'open' changes state when ActionTab is clicked, 'do' displays the correct panel*/
   openActionPanel(key){
     const checkLastKey = (this.state.currentActionKey === key) ? !this.state.showActionPanel : true;
     this.setState({
@@ -59,7 +60,7 @@ class ActionBar extends Component {
     );
   }
 
-  /* Dropdown function*/
+  /* Dropdown function - cycles through actionSelections.actionDropdown from config file for dropdown selection*/
   doActionDropdownMenu(){
     const { actionDropdowns } = this.props;
     const self = this;
@@ -74,7 +75,7 @@ class ActionBar extends Component {
     });
 
     return (
-      <div className="action-bar__dropdown">
+      <div className="action-bar__dropdown pull-right">
         <DropdownButton
           title={<EntypoDotsThreeVertical />}
           id="action-bar-nested-dropdown"
@@ -87,7 +88,7 @@ class ActionBar extends Component {
     );
   }
 
-  /* Dialog functions*/
+  /* Dialog functions - 'open' changes state when dropdownAction is clicked, 'do' displays the dialog and it's correct info*/
   openActionDialog(key){
     this.setState({
       currentActionKey: key,
@@ -129,10 +130,10 @@ class ActionBar extends Component {
 
     return (
       <div className="action-bar">
+        {doActionDialog}
         <ButtonToolbar className="action-bar__btn-toolbar">
           {actionTabs}
           {doActionDropdownMenu}
-          {doActionDialog}
         </ButtonToolbar>
         <Panel className="actions-panel" collapsible expanded={this.state.showActionPanel}>
           <div>

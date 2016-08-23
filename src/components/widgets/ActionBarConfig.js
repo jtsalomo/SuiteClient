@@ -15,44 +15,44 @@ import TestActionPopup from './TestActionPopup';
 export const actionSelections = {
   actionTabs: [
     {
-      label: 'Add Lead',
+      label: 'Action Button 1',
       icon: <EntypoAddToList />,
-      responsive: {button: '', icon: '', label: 'hidden-xs'},
+      responsive: {button: '', icon: '', label: ''},
       actionMethod: 'collapsiblePanel',
       actionComponent: <TestActionWidget/>
     },
     {
-      label: 'Add Service Appt.',
+      label: 'Action Button 2',
       icon: <EntypoTools />,
       responsive: {button: '', icon: '', label: 'hidden-xs'},
       actionMethod: 'collapsiblePanel',
       actionComponent: <TestActionWidget/>
     },
     {
-      label: 'Generate Offer',
+      label: 'Action Button 3',
       icon: <EntypoPriceTag />,
       responsive: {button: '', icon: '', label: 'hidden-xs'},
       actionMethod: 'collapsiblePanel',
       actionComponent: <TestActionWidget/>
     },
     {
-      label: 'View Attachments',
+      label: 'Action Button 4',
       icon: <EntypoAttachment />,
       responsive: {button: '', icon: '', label: 'hidden-xs'},
       actionMethod: 'collapsiblePanel',
       actionComponent: <TestActionWidget/>
     },
     {
-      label: 'Show Letters',
+      label: 'Action Button 5',
       icon: <EntypoMail />,
-      responsive: {button: '', icon: '', label: 'hidden-xs'},
+      responsive: {button: 'hidden-md-down', icon: '', label: ''},
       actionMethod: 'collapsiblePanel',
       actionComponent: <TestActionWidget/>
     },
     {
-      label: 'Show Tasks',
+      label: 'Action Button 6',
       icon: <EntypoOpenBook/>,
-      responsive: {button: '', icon: '', label: 'hidden-xs'},
+      responsive: {button: 'hidden-lg-down', icon: '', label: ''},
       actionMethod: 'collapsiblePanel',
       actionComponent: <TestActionWidget/>
     },
