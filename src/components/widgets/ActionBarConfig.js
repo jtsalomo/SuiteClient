@@ -1,59 +1,108 @@
 import React from 'react';
 
-import { EntypoPriceTag, EntypoAttachment, EntypoMail } from 'react-entypo';
-import FontAwesome from 'react-fontawesome';
+import {
+  EntypoAddToList,
+  EntypoTools,
+  EntypoPriceTag,
+  EntypoAttachment,
+  EntypoMail,
+  EntypoOpenBook
+} from 'react-entypo';
 
 import TestActionWidget from './TestActionWidget';
+import TestActionPopup from './TestActionPopup';
 
-export const actionSelections = [
-  {
-    label: 'Add Lead',
-    icon: <FontAwesome name='bullseye' fixedWidth={true} />,
-    overflow: 'visible',
-    actionMethod: 'collapsiblePanel',
-    actionComponent: <TestActionWidget/>
-  },
-  {
-    label: 'Add Service Appt.',
-    icon: 'wrench',
-    overflow: 'visible',
-    actionMethod: 'collapsiblePanel',
-    actionComponent: <TestActionWidget/>
-  },
-  {
-    label: 'Generate Offer',
-    icon: 'tag',
-    overflow: 'visible',
-    actionMethod: 'collapsiblePanel',
-    actionComponent: <TestActionWidget/>
-  },
-  {
-    label: 'View Attachments',
-    icon: 'paperclip',
-    overflow: 'visible',
-    actionMethod: 'collapsiblePanel',
-    actionComponent: <TestActionWidget/>
-  },
-  {
-    label: 'Show Letters',
-    icon: 'envelope',
-    overflow: 'visible',
-    actionMethod: 'collapsiblePanel',
-    actionComponent: <TestActionWidget/>
-  },
-  {
-    label: 'Show Tasks',
-    icon: 'pencil-square-o',
-    overflow: 'visible',
-    actionMethod: 'collapsiblePanel',
-    actionComponent: <TestActionWidget/>
-  },
-  {label: 'Add Lead', icon: 'bullseye', overflow: 'hidden', actionMethod: 'popup', actionComponent: <TestActionWidget/>},
-  {label: 'Add Service Appt.', icon: 'wrench', overflow: 'hidden', actionMethod: 'popup', actionComponent: <TestActionWidget/>},
-  {label: 'Generate Offer', icon: 'tag', overflow: 'hidden', actionMethod: 'popup', actionComponent: <TestActionWidget/>},
-  {label: 'View Attachments', icon: 'paperclip', overflow: 'hidden', actionMethod: 'popup', actionComponent: <TestActionWidget/>},
-  {label: 'Show Letters', icon: 'envelope', overflow: 'hidden', actionMethod: 'popup', actionComponent: <TestActionWidget/>},
-  {label: 'Show Tasks', icon: 'pencil-square-o', overflow: 'hidden', actionMethod: 'popup', actionComponent: <TestActionWidget/>},
-  {label: 'Add Lead', icon: 'bullseye', overflow: 'hidden', actionMethod: 'popup', actionComponent: <TestActionWidget/>},
-  {label: 'Generate Offer', icon: 'tag', overflow: 'hidden', actionMethod: 'popup', actionComponent: <TestActionWidget/>},
-];
+export const actionSelections = {
+  actionTabs: [
+    {
+      label: 'Add Lead',
+      icon: <EntypoAddToList />,
+      overflow: 'visible',
+      actionMethod: 'collapsiblePanel',
+      actionComponent: <TestActionWidget/>
+    },
+    {
+      label: 'Add Service Appt.',
+      icon: <EntypoTools />,
+      overflow: 'visible',
+      actionMethod: 'collapsiblePanel',
+      actionComponent: <TestActionWidget/>
+    },
+    {
+      label: 'Generate Offer',
+      icon: <EntypoPriceTag />,
+      overflow: 'visible',
+      actionMethod: 'collapsiblePanel',
+      actionComponent: <TestActionWidget/>
+    },
+    {
+      label: 'View Attachments',
+      icon: <EntypoAttachment />,
+      overflow: 'visible',
+      actionMethod: 'collapsiblePanel',
+      actionComponent: <TestActionWidget/>
+    },
+    {
+      label: 'Show Letters',
+      icon: <EntypoMail />,
+      overflow: 'visible',
+      actionMethod: 'collapsiblePanel',
+      actionComponent: <TestActionWidget/>
+    },
+    {
+      label: 'Show Tasks',
+      icon: <EntypoOpenBook/>,
+      overflow: 'visible',
+      actionMethod: 'collapsiblePanel',
+      actionComponent: <TestActionWidget/>
+    },
+  ],
+  actionDropdowns: [
+    {
+      label: 'AdditionalAction1',
+      overflow: 'hidden',
+      actionMethod: 'dropdown',
+      actionComponent: <TestActionPopup/>
+    },
+    {
+      label: 'AdditionalAction2',
+      overflow: 'hidden',
+      actionMethod: 'dropdown',
+      actionComponent: <TestActionPopup/>
+    },
+    {
+      label: 'AdditionalAction3',
+      overflow: 'hidden',
+      actionMethod: 'dropdown',
+      actionComponent: <TestActionPopup/>
+    },
+    {
+      label: 'AdditionalAction4',
+      overflow: 'hidden',
+      actionMethod: 'dropdown',
+      actionComponent: <TestActionPopup/>
+    },
+    {
+      label: 'AdditionalAction5',
+      overflow: 'hidden',
+      actionMethod: 'dropdown',
+      actionComponent: <TestActionPopup/>
+    },
+    {
+      label: 'AdditionalAction6',
+      overflow: 'hidden',
+      actionMethod: 'dropdown',
+      actionComponent: <TestActionPopup/>
+    },
+    {
+      label: 'AdditionalAction7',
+      overflow: 'hidden',
+      actionMethod: 'dropdown',
+      actionComponent: <TestActionPopup/>
+    },
+  ]
+};
+
+
+
+

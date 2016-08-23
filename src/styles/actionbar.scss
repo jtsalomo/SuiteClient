@@ -6,6 +6,10 @@
 
   &__button {
     border: none;
+
+    &-label {
+      padding-left: 5px;
+    }
   }
 
   &__btn-toolbar {
@@ -13,8 +17,13 @@
     border-bottom: 1px solid #ddd;
   }
 
-  &__action-overflow {
+  &__dropdown {
     float: right;
+
+    & .dropdown-menu {
+      left: auto;
+      right: 0;
+    }
   }
 }
 

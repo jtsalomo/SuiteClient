@@ -1,7 +1,7 @@
 /* eslint-disable react/no-multi-comp */
 import React, {Component, PropTypes} from 'react';
-import FontAwesome from 'react-fontawesome';
-import { ButtonToolbar, ButtonGroup, Button, Panel } from 'react-bootstrap';
+import { EntypoDotsThreeVertical } from 'react-entypo';
+import { ButtonToolbar, ButtonGroup, Button, Panel, DropdownButton, MenuItem, Modal } from 'react-bootstrap';
 
 import { actionSelections } from '../widgets/ActionBarConfig';
 
@@ -9,53 +9,45 @@ class ActionBar extends Component {
   constructor(props){
     super(props);
     this.state = {
-      currentPanelKey: 0,
-      showAdditionalActions: false,
-      showIndividualActionPanel: false,
+      currentActionKey: 0,
+      showActionPanel: false,
+      showActionDialog: false,
     };
-
-    this.openAdditionalActions = this.openAdditionalActions.bind(this);
+    this.openActionDialog = this.openActionDialog.bind(this);
   }
 
-  openAdditionalActions(){
-    this.setState({
-      showAdditionalActions: !this.state.showAdditionalActions,
-    });
-  }
-
-  openActionsPanel(key){
-    const checkLastKey = (this.state.currentPanelKey === key) ? !this.state.showIndividualActionPanel : true;
-    this.setState({
-      currentPanelKey: key,
-      showIndividualActionPanel: checkLastKey,
-    });
-  }
-
-  doActionButtons(isVisible){
-    const { actionButtons } = this.props;
+  doActionTabs(){
+    const { actionTabs } = this.props;
     const self = this;
 
-    const doButtons = actionButtons.map(function(v, key){
-      if(isVisible === v.overflow){
-        const openActionsPanel = self.openActionsPanel.bind(self, key);
-        return(
-          <Button key={key} className="action-bar__button" onClick={openActionsPanel}>
-            <FontAwesome name={v.icon} fixedWidth={true} />
-            <span className='hidden-xs'>{v.label}</span>
-          </Button>
-        );
-      }
+    const doTabs = actionTabs.map(function(v, key){
+      const openActionPanel = self.openActionPanel.bind(self, key);
+      return(
+        <Button key={key} className="action-bar__button" onClick={openActionPanel}>
+          {v.icon}
+          <span className='action-bar__button-label hidden-xs'>{v.label}</span>
+        </Button>
+      );
     });
     return (
       <ButtonGroup>
-        {doButtons}
+        {doTabs}
       </ButtonGroup>
     );
   }
 
+  /* Panel functions*/
+  openActionPanel(key){
+    const checkLastKey = (this.state.currentActionKey === key) ? !this.state.showActionPanel : true;
+    this.setState({
+      currentActionKey: key,
+      showActionPanel: checkLastKey,
+    });
+  }
+
   doActionPanel(){
-    const { actionButtons } = this.props;
-    const actions = actionButtons[this.state.currentPanelKey];
+    const { actionTabs } = this.props;
+    const actions = actionTabs[this.state.currentActionKey];
     const actionPanelComponent = actions.actionComponent;
 
     return(
@@ -66,31 +58,85 @@ class ActionBar extends Component {
     );
   }
 
+  /* Dropdown function*/
+  doActionDropdownMenu(){
+    const { actionDropdowns } = this.props;
+    const self = this;
+
+    const doTabs = actionDropdowns.map(function(v, key){
+      const openActionDialog = self.openActionDialog.bind(self, key);
+      return(
+        <MenuItem key={key} eventKey="key" onClick={openActionDialog}>
+           {v.label}
+        </MenuItem>
+      );
+    });
+
+    return (
+      <div className="action-bar__dropdown">
+        <DropdownButton
+          title={<EntypoDotsThreeVertical />}
+          id="action-bar-nested-dropdown"
+          noCaret={true}
+          className="action-bar__button"
+        >
+          {doTabs}
+        </DropdownButton>
+      </div>
+    );
+  }
+
+  /* Dialog function*/
+  openActionDialog(key){
+    this.setState({
+      currentActionKey: key,
+      showActionDialog: !this.state.showActionDialog,
+    });
+  }
+
+  doActionDialog(){
+    const { actionDropdowns } = this.props;
+    const { showActionDialog, currentActionKey } = this.state;
+    const actions = actionDropdowns[currentActionKey];
+    const actionDialogComponent = actions.actionComponent;
+    const actionDialogLabel = actions.label;
+    const openActionDialog = this.openActionDialog.bind(this, currentActionKey);
+
+    return (
+      <div className="static-modal">
+        <Modal show={showActionDialog} onHide={openActionDialog}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {actionDialogLabel}
+            {actionDialogComponent}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={openActionDialog}>Close</Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    );
+  }
+
   render(){
-    let visibleActionButtons = this.doActionButtons('visible');
-    let hiddenActionButtons = (this.state.showAdditionalActions) ? this.doActionButtons('hidden') : null;
-    let doActionPanel = (this.state.showIndividualActionPanel) ? this.doActionPanel() : null;
+    let actionTabs = this.doActionTabs();
+    let doActionPanel = (this.state.showActionPanel) ? this.doActionPanel() : null;
+    let doActionDropdownMenu = this.doActionDropdownMenu();
+    let doActionDialog = this.doActionDialog();
 
     return (
       <div className="action-bar">
-
         <ButtonToolbar className="action-bar__btn-toolbar">
-          {visibleActionButtons}
-          <div className="action-bar__action-overflow" onClick={this.openAdditionalActions}>
-            <Button className="action-bar__button" >
-              <FontAwesome name='ellipsis-v' fixedWidth={true} />
-            </Button>
-          </div>
+          {actionTabs}
+          {doActionDropdownMenu}
+          {doActionDialog}
         </ButtonToolbar>
-
-        <ButtonToolbar bsStyle="link" className="action-bar__btn-toolbar">
-          {hiddenActionButtons}
-        </ButtonToolbar>
-
-        <Panel className="actions-panel" collapsible expanded={this.state.showIndividualActionPanel}>
+        <Panel className="actions-panel" collapsible expanded={this.state.showActionPanel}>
           <div>
-          {doActionPanel}
-            </div>
+            {doActionPanel}
+          </div>
         </Panel>
       </div>
     );
@@ -98,10 +144,13 @@ class ActionBar extends Component {
 }
 
 ActionBar.propTypes = {
-  actionButtons: PropTypes.array
+  actionTabs: PropTypes.array,
+  actionDropdowns: PropTypes.array,
 };
+
 ActionBar.defaultProps = {
-  actionButtons: actionSelections
+  actionTabs: actionSelections.actionTabs,
+  actionDropdowns: actionSelections.actionDropdowns,
 };
 
 export default ActionBar;
