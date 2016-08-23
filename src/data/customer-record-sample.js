@@ -16,7 +16,37 @@ const customerinfo = {
     "ebr": true,
     "expressConsent": true
   },
-  "memo": "Kyla has two young kids and is always in a hurry to get things done. Please be quick."
+  "memo": "Kyla has two young kids and is always in a hurry to get things done. Please be quick.",
+  "tasks": [
+    {
+      "title":"Reminder to Call Customer (1)"
+    },
+    {
+      "title":"Reply to Customer Email (2)"
+    },
+    {
+      "title":"Prospect just viewed this email (3)"
+    },
+    {
+      "title":"This task is initially hidden (4)"
+    }
+  ]
 };
 
+/*
+
+    {
+      "title":"Reminder to Call Customer (1)"
+    },
+    {
+      "title":"Reply to Customer Email (2)"
+    },
+    {
+      "title":"Prospect just viewed this email (3)"
+    },
+    {
+      "title":"This task is initially hidden (4)"
+    }
+
+  */
 export default customerinfo;

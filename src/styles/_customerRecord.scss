@@ -1,0 +1,9 @@
+$customerrecord : '.customerrecord'; // namespace for component
+
+#{$customerrecord} {
+  &__head {
+    &--fixed {
+      z-index: 100;
+    }
+  }
+}

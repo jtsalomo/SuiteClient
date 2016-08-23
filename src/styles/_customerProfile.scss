@@ -1,7 +1,5 @@
 $customerprofile : '.customerprofile'; // namespace for component
 
-body { height: 2000px; }
-
 #{$customerprofile} {
   // copy .panel styles
   background-color: $panel-bg;
