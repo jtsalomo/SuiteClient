@@ -61,13 +61,13 @@ export const actionSelections = {
   actionDropdowns: [
     {
       label: 'Action Button 5',
-      responsive: {button: 'visible-md-up'},
+      responsive: {button: 'hidden-md-up'},
       actionMethod: 'modal',
       actionComponent: <TestActionPopup/>
     },
     {
       label: 'Action Button 6',
-      responsive: {button: 'visible-lg'},
+      responsive: {button: 'hidden-lg'},
       actionMethod: 'modal',
       actionComponent: <TestActionPopup/>
     },
