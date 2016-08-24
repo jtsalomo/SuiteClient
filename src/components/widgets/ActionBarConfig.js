@@ -60,39 +60,52 @@ export const actionSelections = {
   ],
   actionDropdowns: [
     {
-      label: 'AdditionalAction1',
-      actionMethod: 'dropdown',
+      label: 'Action Button 5',
+      responsive: {button: 'visible-md-up'},
+      actionMethod: 'modal',
       actionComponent: <TestActionPopup/>
     },
     {
-      label: 'AdditionalAction2',
-      actionMethod: 'dropdown',
+      label: 'Action Button 6',
+      responsive: {button: 'visible-lg'},
+      actionMethod: 'modal',
+      actionComponent: <TestActionPopup/>
+    },
+
+    {
+      label: 'AdditionalAction 1',
+      actionMethod: 'modal',
       actionComponent: <TestActionPopup/>
     },
     {
-      label: 'AdditionalAction3',
-      actionMethod: 'dropdown',
+      label: 'AdditionalAction 2',
+      actionMethod: 'modal',
       actionComponent: <TestActionPopup/>
     },
     {
-      label: 'AdditionalAction4',
-      actionMethod: 'dropdown',
+      label: 'AdditionalAction 3',
+      actionMethod: 'modal',
       actionComponent: <TestActionPopup/>
     },
     {
-      label: 'AdditionalAction5',
-      actionMethod: 'dropdown',
+      label: 'AdditionalAction 4',
+      actionMethod: 'modal',
       actionComponent: <TestActionPopup/>
     },
     {
-      label: 'AdditionalAction6',
-      actionMethod: 'dropdown',
+      label: 'AdditionalAction 5',
+      actionMethod: 'modal',
       actionComponent: <TestActionPopup/>
     },
     {
-      label: 'AdditionalAction7',
-      actionMethod: 'dropdown',
+      label: 'AdditionalAction 6',
+      actionMethod: 'modal',
       actionComponent: <TestActionPopup/>
+    },
+    {
+      label: 'External Link Example',
+      actionMethod: 'link',
+      actionLink: 'http://google.com',
     },
   ]
 };

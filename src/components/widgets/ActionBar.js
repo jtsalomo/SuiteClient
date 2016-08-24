@@ -6,7 +6,7 @@
 /* eslint-disable react/no-multi-comp */
 import React, {Component, PropTypes} from 'react';
 import { EntypoDotsThreeVertical } from 'react-entypo';
-import { ButtonToolbar, ButtonGroup, Button, Panel, DropdownButton, MenuItem, Modal } from 'react-bootstrap';
+import { Nav, NavItem, ButtonToolbar, Button, Panel, DropdownButton, MenuItem, Modal } from 'react-bootstrap';
 
 import { actionSelections } from '../widgets/ActionBarConfig';
 
@@ -18,6 +18,7 @@ class ActionBar extends Component {
       showActionPanel: false,
       showActionDialog: false,
     };
+    this.openActionPanel = this.openActionPanel.bind(this);
     this.openActionDialog = this.openActionDialog.bind(this);
   }
 
@@ -25,23 +26,23 @@ class ActionBar extends Component {
   doActionTabs(){
     const { actionTabs } = this.props;
     const { currentActionKey, showActionPanel } = this.state;
-    const self = this;
+    const activeKey = (showActionPanel) ? currentActionKey : null;
 
     const doTabs = actionTabs.map(function(v, key){
-      const openActionPanel = self.openActionPanel.bind(self, key);
       const responsiveClass = v.responsive;
-      const tabFocusClass = (showActionPanel & currentActionKey === key) ? 'active' : '';
       return(
-        <Button key={key} className={'action-bar__button ' + responsiveClass.button + ' ' + tabFocusClass} onClick={openActionPanel}>
+        <NavItem eventKey={key} key={key} className={'action-bar__button ' + responsiveClass.button} >
           <span className={'action-bar__button-icon ' + responsiveClass.icon}>{v.icon}</span>
           <span className={'action-bar__button-label ' + responsiveClass.label}>{v.label}</span>
-        </Button>
+        </NavItem>
       );
     });
     return (
-      <ButtonGroup>
-        {doTabs}
-      </ButtonGroup>
+      <div className="action-bar__action-tabs">
+        <Nav bsStyle="tabs" activeKey={activeKey} onSelect={this.openActionPanel}>
+          {doTabs}
+        </Nav>
+      </div>
     );
   }
 
@@ -72,11 +73,19 @@ class ActionBar extends Component {
     const { actionDropdowns } = this.props;
     const self = this;
 
-    const doTabs = actionDropdowns.map(function(v, key){
-      const openActionDialog = self.openActionDialog.bind(self, key);
+    const doDropdownSelections = actionDropdowns.map(function(v, key){
+      const openActionDialog = (v.actionMethod === 'modal') ? self.openActionDialog.bind(self, key) : null;
+      const actionLink = (v.actionMethod === 'link' && v.actionLink !== null) ? v.actionLink : null;
+
+      const responsiveStyle = (v.responsive) ? 'action-bar__dropdown-overflow-selection ' + v.responsive.button : null;
       return(
-        <MenuItem key={key} eventKey="key" onClick={openActionDialog}>
-           {v.label}
+        <MenuItem
+          key={key} eventKey="key"
+          className={responsiveStyle}
+          onClick={openActionDialog}
+          href={actionLink} target="_blank"
+        >
+          {v.label}
         </MenuItem>
       );
     });
@@ -87,9 +96,9 @@ class ActionBar extends Component {
           title={<EntypoDotsThreeVertical />}
           id="action-bar-nested-dropdown"
           noCaret={true}
-          className="action-bar__button"
+          className="action-bar__dropdown-button"
         >
-          {doTabs}
+            {doDropdownSelections}
         </DropdownButton>
       </div>
     );
@@ -142,7 +151,7 @@ class ActionBar extends Component {
           {actionTabs}
           {doActionDropdownMenu}
         </ButtonToolbar>
-        <Panel className="actions-panel" collapsible expanded={this.state.showActionPanel}>
+        <Panel className="action-bar__panel" collapsible expanded={this.state.showActionPanel}>
           <div>
             {doActionPanel}
           </div>
