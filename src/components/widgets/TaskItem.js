@@ -16,8 +16,8 @@ function getStyles() {
 
     leftStyle:{
       marginTop:'20px',
-      marginLeft:'30px',
-      float: 'left'
+      marginLeft:'40px',
+      float: 'left',
     },
 
     textStyle:{
@@ -30,7 +30,6 @@ function getStyles() {
       height: 24,
       width: 24,
       display: 'block',
-      position: 'absolute',
       margin: 12,
     },
 
@@ -50,7 +49,7 @@ function getStyles() {
     },
 
     Button:{
-      MarginTop: 30,
+      MarginTop: 32,
       float: 'Right',
       padding: '12px',
       paddingTop: 20,
@@ -63,6 +62,13 @@ function getStyles() {
       marginBottom: 4
     },
 
+    alert:{
+      height:90,
+      borderLeft: '5px solid red',
+      marginLeft:'0px',
+      float: 'left',
+      position: 'relative',
+    },
   };
   return styles;
 }
@@ -86,18 +92,27 @@ class TaskItem extends Component {
 
   createTextElement( styles, className, data, key) {
     return (
-       <p key={key} style={styles} className={className}> {data} </p>
+      <span key={key} style={{marginTop:0}}>
+       <p style={styles} className={className}> {data} </p>
+      </span>
     );
   }
+
   createButtonElement(styles, label, key) {
     return (
-      <span style={styles}>
-      <Button bsStyle="primary" key={key}>
+      <span key={key} style={styles}>
+      <Button bsStyle="primary" >
         <span>{label}</span>
       </Button>
       </span>
     );
   }
+  createAlert(styles, key){
+    return(
+    <span key={key} style={styles} />
+    );
+  }
+
 
   render() {
     const {
@@ -107,13 +122,23 @@ class TaskItem extends Component {
       style,
       leftIcon,
       taskButtonlabel,
-      typeText
+      typeText,
+      alert
     } = this.props;
 
     const styles = getStyles(this.props, this.state);
     const addIcon = [];
     const addButton = [];
     const addText = [children];
+    const alertspan = [];
+
+    if(alert){
+      const addAlert = this.createAlert(
+        styles.alert,
+        'alert'
+      );
+      alertspan.push(addAlert);
+    }
 
     if (leftIcon) {
       this.pushElement(
@@ -165,6 +190,7 @@ class TaskItem extends Component {
 
       <center>
         <div style={Object.assign(styles.root, style)}>
+          {alertspan}
           <span style={styles.leftStyle}>
           {addIcon}
           </span>
@@ -196,6 +222,7 @@ TaskItem.propTypes = {
   typeText: PropTypes.node,
   style: PropTypes.object,
   leftIcon: PropTypes.element,
+  alert: PropTypes.bool,
 };
 
 TaskItem.defaultProps = {
