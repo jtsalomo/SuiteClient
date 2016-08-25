@@ -3,7 +3,7 @@ import React, {Component, PropTypes} from 'react';
 import { EntypoDotsThreeVertical } from 'react-entypo';
 import { Nav, NavItem, ButtonToolbar, Button, Panel, DropdownButton, MenuItem, Modal } from 'react-bootstrap';
 
-import { actionSelections } from './ActionBarConfig';
+import { actionSelections } from './TestActionBarConfig';
 
 class ActionBar extends Component {
   constructor(props){

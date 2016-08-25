@@ -25,11 +25,13 @@
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
     "prebuild": "npm run clean-dist && npm run lint && npm run test",
-    "build": "babel-node buildTools/build.js && npm run open:dist",
+    "build": "babel-node buildTools/build.js && npm run open:dist --ignore *.styleguide.js",
     "test": "mocha buildTools/testSetup.js \"src/**/*.spec.js\" --reporter progress",
     "test:watch": "npm run test -- --watch",
     "test:cover": "babel-node node_modules/isparta/bin/isparta cover --root src --report html node_modules/mocha/bin/_mocha -- --require ./buildTools/testSetup.js \"src/**/*.spec.js\" --reporter progress",
-    "open:cover": "npm run test:cover && open coverage/index.html"
+    "open:cover": "npm run test:cover && open coverage/index.html",
+    "docs": "npm run styleguide",
+    "styleguide": "rsg ./src/**/*.styleguide.js"
   },
   "dependencies": {
     "axios": "0.13.1",
@@ -61,6 +63,7 @@
     "babel-plugin-react-display-name": "2.0.0",
     "babel-plugin-transform-react-constant-elements": "6.9.1",
     "babel-plugin-transform-react-remove-prop-types": "0.2.9",
+    "babel-plugin-transform-react-remove-statics": "0.0.5",
     "babel-preset-es2015": "6.13.2",
     "babel-preset-react": "6.11.1",
     "babel-preset-react-hmre": "1.1.1",
@@ -96,6 +99,7 @@
     "react-entypo": "1.2.4",
     "redux-immutable-state-invariant": "1.2.3",
     "rimraf": "2.5.4",
+    "rsg-alt": "*",
     "sass-loader": "4.0.0",
     "sinon": "1.17.5",
     "sinon-chai": "2.8.0",
