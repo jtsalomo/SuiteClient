@@ -1,14 +1,9 @@
-/**
- * The ActionBar class is used for . . .
- * @class ActionBar
- */
-
 /* eslint-disable react/no-multi-comp */
 import React, {Component, PropTypes} from 'react';
 import { EntypoDotsThreeVertical } from 'react-entypo';
 import { Nav, NavItem, ButtonToolbar, Button, Panel, DropdownButton, MenuItem, Modal } from 'react-bootstrap';
 
-import { actionSelections } from '../widgets/ActionBarConfig';
+import { actionSelections } from './ActionBarConfig';
 
 class ActionBar extends Component {
   constructor(props){
@@ -98,7 +93,7 @@ class ActionBar extends Component {
           noCaret={true}
           className="action-bar__dropdown-button"
         >
-            {doDropdownSelections}
+          {doDropdownSelections}
         </DropdownButton>
       </div>
     );
