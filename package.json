@@ -25,13 +25,11 @@
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
     "prebuild": "npm run clean-dist && npm run lint && npm run test",
-    "build": "babel-node buildTools/build.js && npm run open:dist --ignore *.styleguide.js",
+    "build": "babel-node buildTools/build.js && npm run open:dist",
     "test": "mocha buildTools/testSetup.js \"src/**/*.spec.js\" --reporter progress",
     "test:watch": "npm run test -- --watch",
     "test:cover": "babel-node node_modules/isparta/bin/isparta cover --root src --report html node_modules/mocha/bin/_mocha -- --require ./buildTools/testSetup.js \"src/**/*.spec.js\" --reporter progress",
-    "open:cover": "npm run test:cover && open coverage/index.html",
-    "docs": "npm run styleguide",
-    "styleguide": "rsg ./src/**/*.styleguide.js"
+    "open:cover": "npm run test:cover && open coverage/index.html"
   },
   "dependencies": {
     "axios": "0.13.1",
