@@ -5,7 +5,6 @@ import { AutoAffix } from 'react-overlays';
 import CustomerProfile from '../widgets/CustomerProfile';
 import ActionBar from '../widgets/ActionBar';
 import Tasks from '../widgets/Tasks';
-
 // data
 import customerinfo from '../../data/customer-record-sample';
 

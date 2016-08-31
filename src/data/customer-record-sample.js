@@ -19,17 +19,42 @@ const customerinfo = {
   "memo": "Kyla has two young kids and is always in a hurry to get things done. Please be quick.",
   "tasks": [
     {
-      "title":"Reminder to Call Customer (1)"
+      icon: "phone",
+      primetext: "Reminder to Call Customer",
+      secondarytext: "Assigned to Gene Smith",
+      typetext: "Yesterday",
+      taskbuttonlabel: "Log Call"
     },
     {
-      "title":"Reply to Customer Email (2)"
+      icon: "reply",
+      primetext: "Reply to Customer Email",
+      secondarytext: "Assigned to Aaron Eggleston",
+      typetext: "3 days ago",
+      taskbuttonlabel: "Reply"
     },
     {
-      "title":"Prospect just viewed this email (3)"
+      icon: "new",
+      primetext: "Prospect just viewed this email ",
+      secondarytext: "Assigned to Jerry Fox ",
+      typetext: "1 week ago",
+      taskbuttonlabel: "",
+      alert : true
     },
     {
-      "title":"This task is initially hidden (4)"
-    }
+      icon: "reply",
+      primetext: "Reply to Customer Email",
+      secondarytext: "Assigned to Aaron Eggleston",
+      typetext: "3 days ago",
+      taskbuttonlabel: "Reply"
+    },
+    {
+      icon: "new",
+      primetext: "Prospect just viewed this email ",
+      secondarytext: "Assigned to Jerry Fox ",
+      typetext: "1 week ago",
+      taskbuttonlabel: "",
+      alert : true
+    },
   ]
 };
 

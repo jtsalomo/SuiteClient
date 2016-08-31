@@ -1,7 +1,9 @@
 /* eslint-disable react/no-multi-comp */
 import React, {PropTypes} from 'react';
-import { Button, Modal, Clearfix, Collapse, Alert } from 'react-bootstrap';
+import { Button, Modal, Clearfix, Collapse} from 'react-bootstrap';
 import EntypoPlus from 'react-entypo/lib/entypo/Plus';
+import TaskItem from './TaskItem';
+import { EntypoPhone,EntypoReply,EntypoNew} from 'react-entypo';
 
 /*
   Tasks component.
@@ -40,16 +42,44 @@ class Tasks extends React.Component {
     this.setState({ tasksOpen: !this.state.tasksOpen });
   }
 
+  createTaskItem(icon,primary,secondary,type,btn,alert,key){
+    let taskIcon = icon === 'phone' ? <EntypoPhone />: icon === 'reply' ? <EntypoReply />: icon === 'new' ? <EntypoNew /> : '';
+    return(
+     <span key={key}>
+     <TaskItem
+       leftIcon={taskIcon}
+       primaryText= {primary}
+       secondaryText={secondary}
+       typeText={type}
+       taskButtonlabel={btn}
+       alert={alert}
+    />
+       </span>
+   );
+  }
+
   render(){
     const mergedClasses = this.props.className ? 'tasks '+this.props.className : 'tasks';
     const numOfTasks = this.props.tasks ? this.props.tasks.length : 0;
-
-    // TaskListItems can replace the <Alert>s below;
-    let tasklistInitial = [];
     let tasklistOverflow = [];
-    for (let i = 0; i < numOfTasks; i++) {
-      if(i < 3) tasklistInitial.push(<Alert className="task" key={i}>{this.props.tasks[i].title}</Alert>);
-      else tasklistOverflow.push(<Alert className="task" key={i}>{this.props.tasks[i].title}</Alert>);
+    let taskitemlist = [];
+    for (let i = 0; i < this.props.tasks.length; i++) {
+      const objectData = this.props.tasks[i];
+      const fillTasks = this.createTaskItem(
+        objectData.icon,
+        objectData.primetext,
+        objectData.secondarytext,
+        objectData.typetext,
+        objectData.taskbuttonlabel,
+        objectData.alert,
+          i
+        );
+      if (i < 3) {
+        taskitemlist.push(fillTasks);
+      }
+      else{
+        tasklistOverflow.push(fillTasks);
+      }
     }
 
     return (
@@ -64,7 +94,7 @@ class Tasks extends React.Component {
           <div className="tasks__taskList-container">
             <div className="tasks__taskList">
               <div className="tasks__taskList-initial">
-                {tasklistInitial}
+                {taskitemlist}
               </div>
               <Collapse in={this.state.tasksOpen} className="tasks__taskList-overflow">
                 <div>

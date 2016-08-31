@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import { Button, ListGroupItem } from 'react-bootstrap';
+import { Button,Panel,ButtonToolbar } from 'react-bootstrap';
 
 class TaskItem extends Component {
   constructor(props) {
@@ -17,42 +17,8 @@ class TaskItem extends Component {
     }
   }
 
-  createTextElement(className, data, key) {
-    if(key === "primaryText"){
-      return (
-      <span key={key}>
-       <h5 className={className}> {data} </h5>
-      </span>
-      );
-    }
-    else {
-      return (
-        <span key={key}>
-       <p className={className}> {data} </p>
-      </span>
-      );
-    }
-  }
-
-  createButtonElement(label, key) {
-    return (
-      <span key={key} >
-      <Button bsStyle="primary" >
-        <span>{label}</span>
-      </Button>
-      </span>
-    );
-  }
-
-  createAlert(className, key){
-    return(
-    <span key={key} className={className} />
-    );
-  }
-
   render() {
     const {
-      children,
       primaryText,
       secondaryText,
       leftIcon,
@@ -62,17 +28,6 @@ class TaskItem extends Component {
     } = this.props;
 
     const addIcon = [];
-    const addButton = [];
-    const addText = [children];
-    const alertspan = [];
-
-    if(alert){
-      const addAlert = this.createAlert(
-       'taskitem__alert',
-        'alert'
-      );
-      alertspan.push(addAlert);
-    }
 
     if (leftIcon) {
       this.pushElement(
@@ -81,67 +36,27 @@ class TaskItem extends Component {
       );
     }
 
-    if(taskButtonlabel){
-      const buttonElement = this.createButtonElement(
-       taskButtonlabel,
-       'taskButton'
-    );
-      addButton.push(buttonElement);
-    }
-
-    if (primaryText) {
-      const primaryTextElement = this.createTextElement(
-        "list-group-item-text taskitem__text",
-         primaryText,
-        'primaryText'
-      );
-      addText.push(primaryTextElement);
-    }
-
-    if (secondaryText) {
-      const secondaryTextElement = this.createTextElement(
-        "list-group-item-text text-muted",
-         secondaryText,
-        'secondaryText'
-      );
-      addText.push(secondaryTextElement);
-    }
-    if (typeText) {
-      const primaryTextElement = this.createTextElement(
-        "list-group-item-text text-muted",
-         typeText,
-        'typeText'
-      );
-      addText.push(primaryTextElement);
-    }
-
     return (
-    <div className="taskitem">
-        <ListGroupItem className="taskitem__itemcontainer">
-          {alertspan}
+         <Panel className={(alert) ? " taskitem__alert " : "taskitem .panel-body"} >
           <span className="taskitem__left">
           {addIcon}
           </span>
           <span className="taskitem__textposition">
-          {addText}
-           </span>
-          <span className="taskitem__button">
-          {addButton}
+            <h5 className="taskitem__text">{primaryText}</h5>
+            <p className="taskitem__secondarytext text-muted">{secondaryText}</p>
+            <p className="taskitem__secondarytext text-muted">{typeText}</p>
           </span>
-          <span className="taskitem__button">
-          <Button><span>Dismiss</span></Button>
-           </span>
-          <span className="taskitem__button">
-          <Button><span>Edit</span></Button>
-           </span>
-          </ListGroupItem>
-  </div>
+          <ButtonToolbar className="taskitem__button">
+            <Button>Dismiss</Button>
+            <Button>Edit</Button>
+            {(taskButtonlabel)?<Button bsStyle="primary">{taskButtonlabel}</Button> : null}
+           </ButtonToolbar>
+          </Panel>
     );
   }
 }
 
 TaskItem.propTypes = {
-  children: PropTypes.node,
   taskButtonlabel: PropTypes.string,
   primaryText: PropTypes.node,
   secondaryText: PropTypes.node,
@@ -149,10 +64,6 @@ TaskItem.propTypes = {
   style: PropTypes.object,
   leftIcon: PropTypes.element,
   alert: PropTypes.bool,
-};
-
-TaskItem.defaultProps = {
-  secondaryTextLines: 1,
 };
 
 export default TaskItem;
