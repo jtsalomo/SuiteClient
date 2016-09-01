@@ -81,7 +81,7 @@
     "eventsource-polyfill": "0.9.6",
     "extract-text-webpack-plugin": "1.0.1",
     "file-loader": "0.9.0",
-    "fusion-theme": "2.0.0",
+    "fusion-theme": "2.0.1",
     "glob": "7.0.5",
     "html-webpack-plugin": "2.22.0",
     "isparta": "4.0.0",

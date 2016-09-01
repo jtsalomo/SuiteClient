@@ -37,21 +37,21 @@ class TaskItem extends Component {
     }
 
     return (
-         <Panel className={(alert) ? " taskitem__alert " : "taskitem .panel-body"} >
-          <span className="taskitem__left">
+      <Panel className={(alert) ? "taskitem taskitem--alert " : "taskitem"} >
+        <span className="taskitem__left">
           {addIcon}
-          </span>
-          <span className="taskitem__textposition">
-            <h5 className="taskitem__text">{primaryText}</h5>
-            <p className="taskitem__secondarytext text-muted">{secondaryText}</p>
-            <p className="taskitem__secondarytext text-muted">{typeText}</p>
-          </span>
-          <ButtonToolbar className="taskitem__button">
-            <Button>Dismiss</Button>
-            <Button>Edit</Button>
-            {(taskButtonlabel)?<Button bsStyle="primary">{taskButtonlabel}</Button> : null}
-           </ButtonToolbar>
-          </Panel>
+        </span>
+        <span className="taskitem__textposition">
+          <h5 className="taskitem__text">{primaryText}</h5>
+          <p className="taskitem__secondarytext text-muted">{secondaryText}</p>
+          <p className="taskitem__secondarytext text-muted">{typeText}</p>
+        </span>
+        <ButtonToolbar className="taskitem__button">
+          <Button>Dismiss</Button>
+          <Button>Edit</Button>
+          {(taskButtonlabel)?<Button bsStyle="primary">{taskButtonlabel}</Button> : null}
+        </ButtonToolbar>
+      </Panel>
     );
   }
 }

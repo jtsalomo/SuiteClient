@@ -45,16 +45,15 @@ class Tasks extends React.Component {
   createTaskItem(icon,primary,secondary,type,btn,alert,key){
     let taskIcon = icon === 'phone' ? <EntypoPhone />: icon === 'reply' ? <EntypoReply />: icon === 'new' ? <EntypoNew /> : '';
     return(
-     <span key={key}>
-     <TaskItem
-       leftIcon={taskIcon}
-       primaryText= {primary}
-       secondaryText={secondary}
-       typeText={type}
-       taskButtonlabel={btn}
-       alert={alert}
-    />
-       </span>
+      <TaskItem
+        key={key}
+        leftIcon={taskIcon}
+        primaryText= {primary}
+        secondaryText={secondary}
+        typeText={type}
+        taskButtonlabel={btn}
+        alert={alert}
+      />
    );
   }
 
@@ -72,8 +71,8 @@ class Tasks extends React.Component {
         objectData.typetext,
         objectData.taskbuttonlabel,
         objectData.alert,
-          i
-        );
+        i
+      );
       if (i < 3) {
         taskitemlist.push(fillTasks);
       }
