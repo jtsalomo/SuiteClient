@@ -1,0 +1,17 @@
+/* Card
+ *
+ * Card generic UI component.
+ * Wrapper for use in building other reusable UI.
+ *
+ */
+
+@import '~fusion-theme/dist/fusion-variables.scss';
+
+/* Card
+    ------------------------------------------------ */
+
+$cardsection-namespace: '.cardsection';
+
+#{$cardsection-namespace} {
+  display: flex;
+}

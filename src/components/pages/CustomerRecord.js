@@ -1,16 +1,40 @@
 import React from 'react';
-import { Grid, Col } from 'react-bootstrap';
+import { Grid, Col, Row, Clearfix } from 'react-bootstrap';
 import { AutoAffix } from 'react-overlays';
 
 import CustomerProfile from '../widgets/CustomerProfile';
 import ActionBar from '../widgets/ActionBar';
 import Tasks from '../widgets/Tasks';
+import Card from '../widgets/Card';
+
 // data
 import customerinfo from '../../data/customer-record-sample';
+const cardtestdata = [
+  {
+    label: 'AdditionalAction 1',
+    disabled: false,
+    divider: false,
+    header: false,
+  },
+  {
+    label: 'AdditionalAction 2',
+    disabled: false,
+    divider: false,
+    header: false,
+  }
+  ,
+  {
+    label: 'External Link Example',
+    disabled: false,
+    divider: false,
+    header: false,
+    href: 'http://google.com',
+  }
+];
 
 const CustomerRecord = () => {
   return(
-    <Grid fluid className="customerrecord customerrecord__page">
+    <Grid className="customerrecord customerrecord__page">
 
       <AutoAffix viewportOffsetTop={0} affixClassName="customerrecord__head--fixed customerprofile--collapsed">
         <div className="customerrecord__head m-b-md">
@@ -38,7 +62,53 @@ const CustomerRecord = () => {
         <Tasks tasks={customerinfo.tasks} className="customerrecord__tasks m-b-md" />
 
         {/* Cards */}
-        <div className="customerrecord__cards m-b-md"/>
+        <Row className="customerrecord__cards m-b-md">
+          <Col lg={4} md={4} sm={4} xs={6}>
+
+            <Card header="Appointments (2)" actionDropdown={cardtestdata}>
+              <p>
+                <span>8/9/16, 4:00pm</span><br/>
+                <span>Phone Call</span><br/>
+                <span>Confirmed</span>
+              </p>
+              <p>
+                <span>2017 Mitsubishi</span>
+                <span>Lancer Evolution FE</span>
+              </p>
+            </Card>
+
+          </Col>
+
+          <Col lg={4} md={4} sm={4} xs={6}>
+            <Card header="Dealers" actionDropdown={[]}>
+              <p>
+                <span>8/9/16, 4:00pm</span><br/>
+                <span>Phone Call</span><br/>
+                <span>Confirmed</span>
+              </p>
+              <p>
+                <span>2017 Mitsubishi</span>
+                <span>Lancer Evolution FE</span>
+              </p>
+            </Card>
+          </Col>
+
+          <Clearfix visibleXsBlock/>
+
+          <Col lg={4} md={4} sm={4} xs={6}>
+            <Card header="Wish List (3)">
+              <p>
+                <span>8/9/16, 4:00pm</span><br/>
+                <span>Phone Call</span><br/>
+                <span>Confirmed</span>
+              </p>
+              <p>
+                <span>2017 Mitsubishi</span>
+                <span>Lancer Evolution FE</span>
+              </p>
+            </Card>
+          </Col>
+        </Row>
 
         {/* Service/part */}
         <div className="customerrecord__ m-b-md"/>

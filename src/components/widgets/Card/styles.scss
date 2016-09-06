@@ -1,0 +1,68 @@
+/* Card
+ *
+ * Card generic UI component.
+ * Wrapper for use in building other reusable UI.
+ *
+ */
+
+@import '~fusion-theme/dist/fusion-variables.scss';
+
+/* Card
+    ------------------------------------------------ */
+
+$card-namespace: 'card';
+
+.#{$card-namespace} {
+  border-color: $panel-default-border;
+  position: relative;
+
+  &__dropdown {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__dropdown-button {
+    padding: 15px $padding-base-horizontal 0; // default button padding: $padding-base-vertical $padding-base-horizontal;
+    font-size: ceil(($font-size-base * 1.125)); // taken from .panel-title
+    color: $text-color;
+    background-color: transparent;
+    border-color: transparent;
+
+    &:active,
+    &:focus,
+    &:active:focus,
+    &:hover {
+      border-color: transparent;
+    }
+
+    .#{$card-namespace}__dropdown > .open > &.dropdown-toggle {
+      border-color: transparent;
+
+      &:hover,
+      &:active,
+      &:focus {
+        border-color: transparent;
+      }
+    }
+  }
+}
+
+//$temp: rgba(255, 50, 0, 0.2);
+//
+//.panel-heading {
+//  border-bottom: dashed 1px red !important;
+//}
+//
+//.panel-body {
+//  box-shadow: inset 0 0 0 20px $temp;
+//}
+//
+//.card__dropdown {
+//  &,
+//  & .btn-group,
+//  & .card__dropdown-button {
+//    background-color: $temp;
+//  }
+//}
+
