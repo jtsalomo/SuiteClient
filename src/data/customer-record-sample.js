@@ -55,23 +55,32 @@ const customerinfo = {
       taskbuttonlabel: "",
       alert : true
     },
-  ]
+  ],
+
+  "DealerTeam": [
+    {
+      "Sales Rep": "Jerry Wells",
+    },
+    {
+      "Manager": "Diane Huff",
+    },
+    {
+      "BD Agent": "Corey Owen",
+    },
+    {
+      "CSI Agent": "Joe Murphy",
+    },
+    {
+      "Service Sales Lead": "Bobby Jordan",
+    },
+    {
+      "Service Rep": "Owen Glover",
+    },
+    {
+      "Parts Sales Lead": undefined,
+    }
+  ],
 };
 
-/*
 
-    {
-      "title":"Reminder to Call Customer (1)"
-    },
-    {
-      "title":"Reply to Customer Email (2)"
-    },
-    {
-      "title":"Prospect just viewed this email (3)"
-    },
-    {
-      "title":"This task is initially hidden (4)"
-    }
-
-  */
 export default customerinfo;

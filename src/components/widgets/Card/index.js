@@ -1,8 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 import React, {PropTypes} from 'react';
-import Panel from 'react-bootstrap/lib/Panel';
-import DropdownButton from 'react-bootstrap/lib/DropdownButton';
-import MenuItem from 'react-bootstrap/lib/MenuItem';
+import {Panel,DropdownButton,MenuItem} from 'react-bootstrap';
 import EntypoDotsThreeVertical from 'react-entypo/lib/entypo/DotsThreeVertical';
 // import styles from './styles.scss';
 
@@ -119,6 +117,7 @@ const CardDropdownMenu = (props) => {
           title={<EntypoDotsThreeVertical valign/>}
           noCaret
           pullRight
+          id="dropdown-card-button"
         >
           {menuItems}
         </DropdownButton>
