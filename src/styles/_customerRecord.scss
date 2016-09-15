@@ -6,4 +6,13 @@ $customerrecord : '.customerrecord'; // namespace for component
       z-index: 100;
     }
   }
+
+  &__cards {
+    display: flex;
+    align-items: stretch;
+
+    > div .card {
+      height: 100%;
+    }
+  }
 }

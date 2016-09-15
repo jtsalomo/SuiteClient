@@ -55,10 +55,18 @@ import EntypoDotsThreeVertical from 'react-entypo/lib/entypo/DotsThreeVertical';
 */
 
 const Card = (props) => {
-  const header = <div className="card__title">{props.header}</div>;
+  const {
+    header,
+    className,
+    actionDropdown,
+    children,
+    id,
+    ...other
+  } = props;
+  const panelHeader = <div className="card__title">{header}</div>;
 
   return (
-    <Panel className={'card'+((props.className) ? ' '+props.className : '')} header={header}>
+    <Panel className={'card'+((props.className) ? ' '+props.className : '')} header={panelHeader} {...other}>
       { props.actionDropdown ?
         <CardDropdownMenu actionDropdown={props.actionDropdown}/>
         :
