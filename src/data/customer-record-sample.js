@@ -59,25 +59,32 @@ const customerinfo = {
 
   "DealerTeam": [
     {
-      "Sales Rep": "Jerry Wells",
+      role: "Sales Rep",
+      assignment: "Jerry Wells",
     },
     {
-      "Manager": "Diane Huff",
+      role: "Manager",
+      assignment: "Diane Huff",
     },
     {
-      "BD Agent": "Corey Owen",
+     role: "BD Agent",
+      assignment: "Corey Owen",
     },
     {
-      "CSI Agent": "Joe Murphy",
+      role: "CSI Agent",
+      assignment: "Joe Murphy",
     },
     {
-      "Service Sales Lead": "Bobby Jordan",
+      role: "Service Sales Lead",
+      assignment: "Bobby Jordan",
     },
     {
-      "Service Rep": "Owen Glover",
+      role: "Service Rep",
+      assignment: "Owen Glover",
     },
     {
-      "Parts Sales Lead": undefined,
+      role: "Parts Sales Lead",
+      assignment: undefined,
     }
   ],
 };
