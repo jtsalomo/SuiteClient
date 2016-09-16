@@ -134,10 +134,10 @@ class ActionBar extends Component {
   }
 
   render(){
-    let actionTabs = this.doActionTabs();
-    let doActionPanel = (this.state.showActionPanel) ? this.doActionPanel() : null;
-    let doActionDropdownMenu = this.doActionDropdownMenu();
-    let doActionDialog = this.doActionDialog();
+    const actionTabs = this.doActionTabs();
+    const doActionPanel = (this.state.showActionPanel) ? this.doActionPanel() : null;
+    const doActionDropdownMenu = this.doActionDropdownMenu();
+    const doActionDialog = this.doActionDialog();
 
     return (
       <div className="action-bar">

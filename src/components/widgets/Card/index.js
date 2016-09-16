@@ -60,19 +60,18 @@ const Card = (props) => {
     className,
     actionDropdown,
     children,
-    id,
     ...other
   } = props;
   const panelHeader = <div className="card__title">{header}</div>;
 
   return (
-    <Panel className={'card'+((props.className) ? ' '+props.className : '')} header={panelHeader} {...other}>
-      { props.actionDropdown ?
-        <CardDropdownMenu actionDropdown={props.actionDropdown}/>
+    <Panel className={'card'+((className) ? ' '+className : '')} header={panelHeader} {...other}>
+      { actionDropdown ?
+        <CardDropdownMenu actionDropdown={actionDropdown}/>
         :
         null
       }
-      {props.children}
+      {children}
     </Panel>
   );
 };
@@ -89,11 +88,7 @@ Card.propTypes = {
     onClick: React.PropTypes.func,
     onSelect: React.PropTypes.func
   })),
-  children: React.PropTypes.node,
-  id: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number
-  ])
+  children: React.PropTypes.node
 };
 
 const CardDropdownMenu = (props) => {
