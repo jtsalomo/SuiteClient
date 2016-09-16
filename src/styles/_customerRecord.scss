@@ -4,6 +4,10 @@ $customerrecord : '.customerrecord'; // namespace for component
   &__head {
     &--fixed {
       z-index: 100;
+
+      + div {
+        margin-top: 140px;
+      }
     }
   }
 

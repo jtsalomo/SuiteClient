@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Col, Row, Clearfix } from 'react-bootstrap';
-import { AutoAffix } from 'react-overlays';
+import { Affix } from 'react-overlays';
 
 import CustomerProfile from '../widgets/CustomerProfile';
 import ActionBar from '../widgets/ActionBar';
@@ -38,7 +38,7 @@ const CustomerRecord = () => {
   return(
     <Grid className="customerrecord customerrecord__page">
 
-      <AutoAffix viewportOffsetTop={0} affixClassName="customerrecord__head--fixed customerprofile--collapsed">
+      <Affix viewportOffsetTop={0} affixClassName="customerrecord__head--fixed customerprofile--collapsed">
         <div className="customerrecord__head m-b-md">
           <CustomerProfile
             photo={customerinfo.photo}
@@ -57,7 +57,7 @@ const CustomerRecord = () => {
           />
           <ActionBar/>
         </div>
-      </AutoAffix>
+      </Affix>
 
       <Col sm={12} md={12} lg={12}>
         {/* Tasks */}
