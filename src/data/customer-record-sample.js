@@ -87,6 +87,33 @@ const customerinfo = {
       assignment: undefined,
     }
   ],
+
+  "Appointments": [
+    {
+      time: "8/9/16 4:00pm",
+      type: "Meeting",
+      status: "Confirmed",
+      vehicleYear: "2017",
+      vehicleMake: "Misubishi",
+      vehicleModel: "Lancer Evolution FE"
+    },
+    {
+      time: "8/9/16 5:00pm",
+      type: "Phone",
+      status: "Complete",
+      vehicleYear: "2017",
+      vehicleMake: "Misubishi",
+      vehicleModel: "Lancer Evolution FE"
+    },
+    {
+      time: "9/19/16 2:00pm",
+      type: "Email",
+      status: "Not Confirmed",
+      vehicleYear: "2017",
+      vehicleMake: "Misubishi",
+      vehicleModel: "Lancer Evolution FE"
+    }
+  ]
 };
 
 
