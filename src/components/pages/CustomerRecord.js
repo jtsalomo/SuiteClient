@@ -82,8 +82,7 @@ const CustomerRecord = () => {
           </Col>
 
           <Col lg={4} md={4} sm={4} xs={6}>
-           <DealerCard dealerlist={customerinfo.DealerTeam.Manager} teamRole="Manager"/>
-           /* <DealerCard dealerlist={customerinfo.DealerTeam.salesperson} teamRole="salesperson"/>*/
+           <DealerCard dealerlist={customerinfo.DealerTeam.salesperson} teamRole="salesperson"/>
           </Col>
 
           <Clearfix visibleXsBlock/>
