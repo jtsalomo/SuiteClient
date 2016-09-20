@@ -7,7 +7,7 @@ import ActionBar from '../widgets/ActionBar';
 import Tasks from '../widgets/Tasks';
 import Card from '../widgets/Card';
 
-import DealerCard from '../widgets/DealerTeam/DealerCard';
+import DealerCard from '../widgets/DealerCard/DealerCard';
 import AppointmentsCard from '../widgets/AppointmentsCard/AppointmentsCard';
 
 

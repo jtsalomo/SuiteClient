@@ -1,10 +1,9 @@
-/* eslint-disable react/no-multi-comp */
-import React, {Component, PropTypes, createElement} from 'react';
-import {Modal} from 'react-bootstrap';
-import Card from '../Card';
+import React, {Component, PropTypes } from 'react';
 import { EntypoPhone, EntypoEmail } from 'react-entypo';
 
-// import styles from './styles.scss';
+import Card from '../Card';
+import AppointmentsPage from './AppointmentsPage';
+// import styles from './dealer.scss';
 
 /*
  AppointmentsCard component.
@@ -32,24 +31,25 @@ const statusClass = {
   "Complete": ""
 };
 
-class AppointmentCard extends React.Component {
+const actions = [
+  { label: 'Add Appointments', active: '', disabled: false, header: false, href: 'http://google.com', onClick: null, onSelect: null },
+  { label: "Confirm", active: '', disabled: true, header: false, href: 'http://google.com', onClick: null, onSelect: null },
+  { label: "Complete", active: '', disabled: false, header: false, href: 'http://google.com', onClick: null, onSelect: null },
+  { divider: true  },
+  { label: "Edit", active: '', disabled: false, header: false, href: 'http://google.com', onClick: null, onSelect: null },
+  { label: "Mark as Missed", active: '', disabled: false, header: false, href: 'http://google.com', onClick: null, onSelect: null },
+  { divider: true  },
+  { label: "Cancel", active: '', disabled: false, header: false, href: 'http://google.com', onClick: null, onSelect: null }
+];
+
+class AppointmentsCard extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      appointmentsModal: false
-    };
-    //this.toggleAppointmentsModal = this.toggleAppointmentsModal.bind(this);
-  }
-
-  toggleAppointmentsModal(){
-    this.setState({appointmentsModal: !this.state.appointmentsModal});
   }
 
   getPrimaryAppointment(appointment){
-
-    let appointmentStatusClass = statusClass[appointment.status];
-    let appointmentTypeIcon = appointmentIcon[appointment.type];
-
+    const appointmentStatusClass = statusClass[appointment.status];
+    const appointmentTypeIcon = appointmentIcon[appointment.type];
     return(
       <div>
         <h5 className="appointmentcard__time">{appointment.time}</h5>
@@ -65,61 +65,46 @@ class AppointmentCard extends React.Component {
       );
   }
 
-  doCard(){
+  render() {
     const {
       appointments,
+      appointmentsActions,
       emptyText
     } = this.props;
     const appointmentsCount = this.props.appointments.length;
-
     const headerCounter = (appointmentsCount <= 0 ) ? "" : "(" + appointmentsCount + ")";
     const cardContent = (appointmentsCount <= 0 ) ? emptyText : this.getPrimaryAppointment(appointments[0]);
 
-    return(
-      <Card header={"Appointments " + headerCounter} onClick={this.toggleAppointmentsModal} className="appointmentscard">
-        {cardContent}
-      </Card>
-      );
-  }
-
-  doModal(){
-    const {
-      appointments,
-      ...other
-    } = this.props;
-
-    return(
-      <Modal dialogClassName="modal-full" className="appointmentscard__fullpage" {...other}>
-        <Modal.Header closeButton>
-          <Modal.Title className="display-4">Kyla Gonzalez</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="container">
-          <div className="appointmentsPage__content">
-            {appointments}
-          </div>
-        </Modal.Body>
-      </Modal>
-    );
-  }
-
-  render() {
     return (
       <span>
-        {this.doCard()}
-        {this.doModal()}
+        <Card header={"Appointments " + headerCounter}
+            onClick={this.toggleAppointmentsModal}
+            className="appointmentscard"
+            actionDropdown={appointmentsActions}
+        >
+          {cardContent}
+        </Card>
+
+        <AppointmentsPage />
       </span>
     );
   }
 }
-AppointmentCard.propTypes = {
-  id: PropTypes.number.isRequired,
+
+AppointmentsCard.propTypes = {
+  id: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ]).isRequired,
   appointments: PropTypes.object,
+  appointmentsActions: PropTypes.array,
   emptyText: PropTypes.string
 };
-AppointmentCard.defaultProps = {
+
+AppointmentsCard.defaultProps = {
   appointments: [],
+  appointmentsActions: actions,
   emptyText: "Add an appointment"
 };
 
-export default AppointmentCard;
-/* eslint-enable react/no-multi-comp */
+export default AppointmentsCard;
