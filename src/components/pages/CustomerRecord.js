@@ -7,7 +7,7 @@ import ActionBar from '../widgets/ActionBar';
 import Tasks from '../widgets/Tasks';
 import Card from '../widgets/Card';
 import DealerCard from '../widgets/DealerTeam/DealerCard';
-import AppointmentsCard from '../widgets/AppointmentsCard';
+import AppointmentsCard from '../widgets/AppointmentsCard/AppointmentsCard';
 
 // data
 import customerinfo from '../../data/customer-record-sample';
@@ -66,19 +66,7 @@ const CustomerRecord = () => {
         {/* Cards */}
         <Row className="customerrecord__cards m-b-md">
           <Col lg={4} md={4} sm={4} xs={6}>
-
-            <Card header="Appointments (2)" actionDropdown={cardtestdata}>
-              <p>
-                <span>8/9/16, 4:00pm</span><br/>
-                <span>Phone Call</span><br/>
-                <span>Confirmed</span>
-              </p>
-              <p>
-                <span>2017 Mitsubishi</span>
-                <span>Lancer Evolution FE</span>
-              </p>
-            </Card>
-
+            <AppointmentsCard appointments={customerinfo.Appointments}/>
           </Col>
 
           <Col lg={4} md={4} sm={4} xs={6}>
@@ -88,7 +76,7 @@ const CustomerRecord = () => {
           <Clearfix visibleXsBlock/>
 
           <Col lg={4} md={4} sm={4} xs={6}>
-            <AppointmentsCard />
+            <AppointmentsCard/>
           </Col>
         </Row>
 
