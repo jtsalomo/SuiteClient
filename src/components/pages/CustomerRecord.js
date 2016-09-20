@@ -6,10 +6,11 @@ import CustomerProfile from '../widgets/CustomerProfile';
 import ActionBar from '../widgets/ActionBar';
 import Tasks from '../widgets/Tasks';
 import Card from '../widgets/Card';
+
 import DealerCard from '../widgets/DealerTeam/DealerCard';
 import AppointmentsCard from '../widgets/AppointmentsCard/AppointmentsCard';
 
-// data
+
 import customerinfo from '../../data/customer-record-sample';
 const cardtestdata = [
   {
@@ -70,7 +71,7 @@ const CustomerRecord = () => {
           </Col>
 
           <Col lg={4} md={4} sm={4} xs={6}>
-            <DealerCard dealerlist={customerinfo.DealerTeam}/>
+           <DealerCard dealerlist={customerinfo.DealerTeam.salesperson} teamRole="salesperson"/>
           </Col>
 
           <Clearfix visibleXsBlock/>

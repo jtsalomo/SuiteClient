@@ -43,7 +43,7 @@ class Tasks extends React.Component {
   }
 
   createTaskItem(icon,primary,secondary,type,btn,alert,key){
-    let taskIcon = icon === 'phone' ? <EntypoPhone />: icon === 'reply' ? <EntypoReply />: icon === 'new' ? <EntypoNew /> : '';
+    const taskIcon = icon === 'phone' ? <EntypoPhone />: icon === 'reply' ? <EntypoReply />: icon === 'new' ? <EntypoNew /> : '';
     return(
       <TaskItem
         key={key}
@@ -60,8 +60,8 @@ class Tasks extends React.Component {
   render(){
     const mergedClasses = this.props.className ? 'tasks '+this.props.className : 'tasks';
     const numOfTasks = this.props.tasks ? this.props.tasks.length : 0;
-    let tasklistOverflow = [];
-    let taskitemlist = [];
+    const tasklistOverflow = [];
+    const taskitemlist = [];
     for (let i = 0; i < this.props.tasks.length; i++) {
       const objectData = this.props.tasks[i];
       const fillTasks = this.createTaskItem(
