@@ -57,37 +57,75 @@ const customerinfo = {
     },
   ],
 
-  "DealerTeam": [
-    {
-      role: "Sales Rep",
-      assignment: "Jerry Wells",
-    },
-    {
-      role: "Manager",
-      assignment: "Diane Huff",
-    },
-    {
-     role: "BD Agent",
-      assignment: "Corey Owen",
-    },
-    {
-      role: "CSI Agent",
-      assignment: "Joe Murphy",
-    },
-    {
-      role: "Service Sales Lead",
-      assignment: "Bobby Jordan",
-    },
-    {
-      role: "Service Rep",
-      assignment: "Owen Glover",
-    },
-    {
-      role: "Parts Sales Lead",
-      assignment: undefined,
-    }
-  ],
-
+  "DealerTeam": {
+    "salesperson": [
+      {
+        role: "Sales Rep",
+        assignment: "Jerry Wells",
+      },
+      {
+        role: "Manager",
+        assignment: "Diane Huff",
+      },
+      {
+        role: "BD Agent",
+        assignment: "Corey Owen",
+      },
+      {
+        role: "CSI Agent",
+        assignment: "Joe Murphy",
+      },
+      {
+        role: "Service Sales Lead",
+        assignment: "Bobby Jordan",
+      },
+      {
+        role: "Service Rep",
+        assignment: "Owen Glover",
+      },
+      {
+        role: "Split Sales Rep",
+        assignment: "Jerry Wells",
+      },
+    ],
+    "Manager": [
+      {
+        role: "Sales Rep",
+        assignment: "Jerry Wells",
+        options: ["Jerry Wells", "Diane Huff", "Corey Owen", "Joe Murphy", "Bobby Jordan", "Owen Glover"]
+      },
+      {
+        role: "Manager",
+        assignment: "Diane Huff",
+        options: ["Diane Huff", "Corey Owen", "Joe Murphy", "Bobby Jordan", "Owen Glover", "Jerry Wells"]
+      },
+      {
+        role: "BD Agent",
+        assignment: "Corey Owen",
+        options: ["Corey Owen", "Joe Murphy", "Bobby Jordan", "Owen Glover", "Jerry Wells", "Diane Huff"]
+      },
+      {
+        role: "Split Sales Rep",
+        assignment: "Jerry Wells",
+        options: ["Jerry Wells", "Diane Huff", "Corey Owen", "Joe Murphy", "Bobby Jordan", "Owen Glover"]
+      },
+      {
+        role: "CSI Agent",
+        assignment: "Joe Murphy",
+        options: ["Joe Murphy", "Bobby Jordan", "Owen Glover", "Jerry Wells", "Diane Huff", "Corey Owen"]
+      },
+      {
+        role: "Service Sales Lead",
+        assignment: "Bobby Jordan",
+        options: ["Bobby Jordan", "Owen Glover", "Jerry Wells", "Diane Huff", "Corey Owen", "Joe Murphy"]
+      },
+      {
+        role: "Service Rep",
+        assignment: "Owen Glover",
+        options: ["Owen Glover", "Jerry Wells", "Diane Huff", "Corey Owen", "Joe Murphy", "Bobby Jordan"]
+      },
+    ],
+  },
   "Appointments": [
     {
       time: "8/9/16 4:00pm",
@@ -113,7 +151,7 @@ const customerinfo = {
       vehicleMake: "Misubishi",
       vehicleModel: "Lancer Evolution FE"
     }
-  ]
+  ],
 };
 
 
