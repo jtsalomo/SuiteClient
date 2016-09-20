@@ -163,7 +163,7 @@ class DealerCard extends Component {
   }
 
   createModelTeamList(role, assignment, key,) {
-    if (key < 4)
+    if (key <= 4)
       return (
         <Col xs={6} md={6} key={key}>
       <span key={key}>
@@ -174,7 +174,7 @@ class DealerCard extends Component {
       );
     if (key > 4) {
       return (
-        <Col xs={6} md={8} key={key}>
+        <Col xs={6} md={6} key={key}>
       <span key={key}>
         <div className="dealercard__role">{role}</div>
         <div className="dealercard__spanstyle">{assignment}</div>
@@ -221,7 +221,7 @@ class DealerCard extends Component {
           </ModalHeader>
           <ModalBody
             className={(this.props.teamRole === "Manager") ? "dealercard__managermodel" : "dealercard__teammodel"}>
-            {this.props.teamRole === "Manager" ? (this.createModelManagerList()) : {dealerModelList}}
+            {this.props.teamRole === "Manager" ? (this.createModelManagerList()) : (dealerModelList)}
             </ModalBody>
           <ModalFooter>
             <Button onClick={this.close}>Cancle</Button>
