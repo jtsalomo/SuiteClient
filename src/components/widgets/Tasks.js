@@ -6,117 +6,112 @@ import TaskItem from './TaskItem';
 import { EntypoPhone,EntypoReply,EntypoNew} from 'react-entypo';
 
 /*
-  Tasks component.
-  Parameters:
-    className (options)
-      - additional classes to add to <ul class="tracker">
-    activeStep (optional)
-      - set which step should show active.  Each step to the left (smaller index) of the active item will automatically be set to "completed"
-      - a value of '0' will set all to grey/'incomplete'
-    id (optional)
-      - set the id attribute of the <ul class="tracker">
+ Tasks component.
+ Parameters:
+ className (options)
+ - additional classes to add to <ul class="tracker">
+ activeStep (optional)
+ - set which step should show active.  Each step to the left (smaller index) of the active item will automatically be set to "completed"
+ - a value of '0' will set all to grey/'incomplete'
+ id (optional)
+ - set the id attribute of the <ul class="tracker">
 
-    photo (string)
-      - a URL/path to profile pick.
+ photo (string)
+ - a URL/path to profile pick.
 
-*/
+ */
 
 class Tasks extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      addtaskShow: false,
+      addTaskVisible: false,
       tasksOpen: false
     };
-    this.openAddTask = this.openAddTask.bind(this);
-    this.closeAddTask = this.closeAddTask.bind(this);
-    this.tasksToggle = this.tasksToggle.bind(this);
-  }
-  openAddTask(){
-    this.setState({ addtaskShow: true });
-  }
-  closeAddTask(){
-    this.setState({ addtaskShow: false });
-  }
-  tasksToggle(){
-    this.setState({ tasksOpen: !this.state.tasksOpen });
   }
 
-  createTaskItem(icon,primary,secondary,type,btn,alert,key){
-    const taskIcon = icon === 'phone' ? <EntypoPhone />: icon === 'reply' ? <EntypoReply />: icon === 'new' ? <EntypoNew /> : '';
-    return(
+  toggleAddTask = () => {
+    this.setState({ addTaskVisible: !this.state.addTaskVisible });
+  };
+
+  toggleTasks = () => {
+    this.setState({ tasksOpen: !this.state.tasksOpen });
+  };
+
+  getTaskIcon(type) {
+    switch (type) {
+      case 'phone':
+        return <EntypoPhone />;
+      case 'reply':
+        return <EntypoReply />;
+      case 'new':
+        return <EntypoNew />;
+      default:
+        throw new Error('Unknown icon type');
+    }
+  }
+
+  taskItems(startIndex, limit) {
+    let counter = 1;
+    let index = startIndex;
+    while (counter < limit) {
+      const task = this.taskItems[index];
+      if (!task) break;
       <TaskItem
-        key={key}
-        leftIcon={taskIcon}
-        primaryText= {primary}
-        secondaryText={secondary}
-        typeText={type}
-        taskButtonlabel={btn}
-        alert={alert}
-      />
-   );
+        key={task.id}
+        leftIcon={this.getTaskIconComponent(task.type)}
+        primaryText= {task.primary}
+        secondaryText={task.secondary}
+        typeText={task.type}
+        taskButtonlabel={task.btn}
+        alert={task.alert}
+      />;
+      counter++;
+      index++;
+    }
   }
 
   render(){
-    const mergedClasses = this.props.className ? 'tasks '+this.props.className : 'tasks';
-    const numOfTasks = this.props.tasks ? this.props.tasks.length : 0;
-    const tasklistOverflow = [];
-    const taskitemlist = [];
-    for (let i = 0; i < this.props.tasks.length; i++) {
-      const objectData = this.props.tasks[i];
-      const fillTasks = this.createTaskItem(
-        objectData.icon,
-        objectData.primetext,
-        objectData.secondarytext,
-        objectData.typetext,
-        objectData.taskbuttonlabel,
-        objectData.alert,
-        i
-      );
-      if (i < 3) {
-        taskitemlist.push(fillTasks);
-      }
-      else{
-        tasklistOverflow.push(fillTasks);
-      }
-    }
+    const {className, tasks} = this.props;
+    const mergedClasses = className ? 'tasks '+ className : 'tasks';
 
     return (
       <div className={mergedClasses}>
         <div className="tasks__header">
-          <h5 className="tasks__header-title">Tasks <span className="tasks__header-count">({numOfTasks})</span></h5>
-          <Button className="tasks__header-button tasks__addtask" onClick={this.openAddTask}><EntypoPlus valign/></Button>
+          <h5 className="tasks__header-title">Tasks <span className="tasks__header-count">({tasks.length})</span></h5>
+          <Button className="tasks__header-button tasks__addtask" onClick={this.toggleAddTask}><EntypoPlus valign/></Button>
           <Clearfix/>
         </div>
 
-        { this.props.tasks && this.props.tasks.length > 0 ?
+        { tasks.length > 0 ?
           <div className="tasks__taskList-container">
             <div className="tasks__taskList">
               <div className="tasks__taskList-initial">
-                {taskitemlist}
+                { /* this.taskItems(0, 3) */ }
               </div>
               <Collapse in={this.state.tasksOpen} className="tasks__taskList-overflow">
                 <div>
-                  {tasklistOverflow}
+                  { /* this.taskItems(3) */ }
                 </div>
               </Collapse>
             </div>
-            <Button block onClick={this.tasksToggle}>{this.state.tasksOpen ? 'Show Less' : 'Show More'}</Button>
+            <Button block onClick={this.toggleTasks}>{this.state.tasksOpen ? 'Show Less' : 'Show More'}</Button>
           </div>
-        :
-        <div className="tasks__taskList-container--notasks">
-          <span className="text-muted">You do not have any active tasks.</span>
-        </div>
+          :
+          <div className="tasks__taskList-container--notasks">
+            <span className="text-muted">You do not have any active tasks.</span>
+          </div>
         }
 
-        <AddTaskModal show={this.state.addtaskShow} onHide={this.closeAddTask} />
+        <AddTaskModal show={this.state.showAddTask} onHide={this.toggleAddTask} />
       </div>
     );
   }
 }
+
 Tasks.propTypes = {
   className: PropTypes.string,
-  tasks: PropTypes.array
+  tasks: PropTypes.array.isRequired
 };
 
 // Modals
