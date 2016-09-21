@@ -1,5 +1,5 @@
 import React, {Component, PropTypes } from 'react';
-import { EntypoPhone, EntypoEmail } from 'react-entypo';
+import { EntypoPhone, EntypoEmail, EntypoMail, EntypoLandline, EntypoCalendar, EntypoBriefcase } from 'react-entypo';
 
 import Card from '../Card';
 import AppointmentsPage from './AppointmentsPage';
@@ -15,12 +15,12 @@ import AppointmentsPage from './AppointmentsPage';
 */
 
 const appointmentIcon = {
-  "Meeting": <EntypoPhone/>,
-  "Phone Call": <EntypoPhone/>,
-  "Other": <EntypoPhone/>,
-  "Fax": <EntypoPhone/>,
-  "Letter": <EntypoPhone/>,
-  "Email": <EntypoEmail/>
+  "Meeting": <EntypoBriefcase valign/>,
+  "Phone Call": <EntypoPhone valign/>,
+  "Other": <EntypoCalendar valign/>,
+  "Fax": <EntypoLandline valign/>,
+  "Letter": <EntypoMail valign/>,
+  "Email": <EntypoEmail valign/>
 };
 
 const statusClass = {
@@ -92,10 +92,7 @@ class AppointmentsCard extends Component {
 }
 
 AppointmentsCard.propTypes = {
-  id: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ]).isRequired,
+  id: PropTypes.string.isRequired,
   appointments: PropTypes.array,
   appointmentsActions: PropTypes.array,
   emptyText: PropTypes.string
