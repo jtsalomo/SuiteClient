@@ -1,52 +1,6 @@
 export const schema = {
   "type": "object",
   "properties": {
-    "appointments": {
-      "type": "array",
-      "minItems": 0,
-      "maxItems": 20,
-      "items": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "minimum": 1
-          },
-          "time": {
-            "type": "string",
-            "faker": "date.future"
-          },
-          "type": {
-            "type": "string",
-            "pattern": "Meeting|Phone|Email"
-          },
-          "status": {
-            "type": "string",
-            "pattern": "Confirmed|Complete|Not Confirmed"
-          },
-          "vehicle": {
-            "type": "object",
-            "properties": {
-              "year": {
-                "type": "number",
-                "minimum": 1997,
-                "maximum": 2017
-              },
-              "make": {
-                "type": "string",
-                "pattern": "Ford|Chevrolet|Chrysler|Nissan"
-              },
-              "model": {
-                "type": "string",
-                "pattern": "F150|Sierra|Taurus|Maxima|Altima"
-              }
-            },
-            "required": ['year', 'make', 'model']
-          }
-        },
-        "required": ['id', 'time','type','status','vehicle']
-      }
-    },
     "dealerTeam": {
       "type": "array",
       "minItems": 10,
@@ -75,7 +29,8 @@ export const schema = {
       "properties": {
         "id": {
           "type": "number",
-          "minimum": 1
+          "minimum": 1,
+          "maximum": 1
         },
         "photo": {
           "type": "string",
@@ -132,24 +87,74 @@ export const schema = {
           "items": {
             "type": "object",
             "properties": {
-              "icon": {
+              "id": {
+                "type": "number",
+                "minimum": 1
+              },
+              "type": {
                 "type": "string",
                 "pattern": "phone|reply|new"
               },
-              "primetext": {
+              "primaryText": {
                 "type": "string",
                 "faker": "lorem.sentence"
               },
-              "typetext": {
+              "secondaryText": {
                 "type": "string",
                 "faker": "lorem.sentence"
-              },
-              "taskbuttonlabel": {
-                "type": "string",
-                "pattern": "Log Call|Reply"
               }
             },
-            "required": ['icon', 'primetext', 'typetext', 'taskbuttonlabel']
+            "required": ['id', 'type', 'primaryText', 'secondaryText']
+          }
+        },
+        "appointments": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 20,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "minimum": 1
+              },
+              "time": {
+                "type": "string",
+                "faker": "date.future"
+              },
+              "type": {
+                "type": "string",
+                "pattern": "Meeting|Phone|Email"
+              },
+              "status": {
+                "type": "string",
+                "pattern": "Confirmed|Complete|Not Confirmed"
+              },
+              "vehicle": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "minimum": 1
+                  },
+                  "year": {
+                    "type": "number",
+                    "minimum": 1997,
+                    "maximum": 2017
+                  },
+                  "make": {
+                    "type": "string",
+                    "pattern": "Ford|Chevrolet|Chrysler|Nissan"
+                  },
+                  "model": {
+                    "type": "string",
+                    "pattern": "F150|Sierra|Taurus|Maxima|Altima"
+                  }
+                },
+                "required": ['id', 'year', 'make', 'model']
+              }
+            },
+            "required": ['id', 'time', 'type', 'status', 'vehicle']
           }
         }
       },
