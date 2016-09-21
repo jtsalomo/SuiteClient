@@ -5,7 +5,7 @@
   "homepage": "https://github.com/TigerCox/suite-client",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TigerCox/suite-client.git"
+    "url": "https://github.com/TigerCox/suite-client.git"
   },
   "engines": {
     "npm": ">=3"
