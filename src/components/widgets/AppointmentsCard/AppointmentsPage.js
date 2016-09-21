@@ -37,10 +37,7 @@ class AppointmentsPage extends Component {
 }
 
 AppointmentsPage.propTypes = {
-  id: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ]).isRequired,
+  id: PropTypes.string.isRequired,
   appointments: PropTypes.object,
 };
 
