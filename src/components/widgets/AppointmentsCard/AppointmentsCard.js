@@ -96,7 +96,7 @@ AppointmentsCard.propTypes = {
     PropTypes.number,
     PropTypes.string
   ]).isRequired,
-  appointments: PropTypes.object,
+  appointments: PropTypes.array,
   appointmentsActions: PropTypes.array,
   emptyText: PropTypes.string
 };
