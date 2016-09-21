@@ -25,14 +25,14 @@ class Tasks extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      addTaskVisible: false,
+      addTaskModalVisible: false,
       tasksOpen: false
     };
     this.taskItems = this.taskItems.bind(this);
   }
 
-  toggleAddTask = () => {
-    this.setState({ addTaskVisible: !this.state.addTaskVisible });
+  toggleAddTaskModalVisibility = () => {
+    this.setState({ addTaskModalVisible: !this.state.addTaskModalVisible });
   };
 
   toggleTasks = () => {
@@ -83,7 +83,7 @@ class Tasks extends React.Component {
       <div className={mergedClasses}>
         <div className="tasks__header">
           <h5 className="tasks__header-title">Tasks <span className="tasks__header-count">({tasks.length})</span></h5>
-          <Button className="tasks__header-button tasks__addtask" onClick={this.toggleAddTask}><EntypoPlus valign/></Button>
+          <Button className="tasks__header-button tasks__addtask" onClick={this.toggleAddTaskModalVisibility}><EntypoPlus valign/></Button>
           <Clearfix/>
         </div>
 
@@ -99,7 +99,7 @@ class Tasks extends React.Component {
                 </div>
               </Collapse>
             </div>
-            <Button block onClick={this.toggleTasks}>{this.state.tasksOpen ? 'Show Less' : 'Show More'}</Button>
+            { tasks.length > 3 && <Button block onClick={this.toggleTasks}>{this.state.tasksOpen ? 'Show Less' : 'Show More'}</Button> }
           </div>
           :
           <div className="tasks__taskList-container--notasks">
@@ -107,7 +107,7 @@ class Tasks extends React.Component {
           </div>
         }
 
-        <AddTaskModal show={this.state.showAddTask} onHide={this.toggleAddTask} />
+        <AddTaskModal show={this.state.addTaskModalVisible} onHide={this.toggleAddTaskModalVisibility} />
       </div>
     );
   }
