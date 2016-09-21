@@ -35,10 +35,10 @@ const actions = [
   { label: 'Add Appointments', active: '', disabled: false, header: false, href: 'http://google.com', onClick: null, onSelect: null },
   { label: "Confirm", active: '', disabled: true, header: false, href: 'http://google.com', onClick: null, onSelect: null },
   { label: "Complete", active: '', disabled: false, header: false, href: 'http://google.com', onClick: null, onSelect: null },
-  { divider: true  },
+  { divider: true },
   { label: "Edit", active: '', disabled: false, header: false, href: 'http://google.com', onClick: null, onSelect: null },
   { label: "Mark as Missed", active: '', disabled: false, header: false, href: 'http://google.com', onClick: null, onSelect: null },
-  { divider: true  },
+  { divider: true },
   { label: "Cancel", active: '', disabled: false, header: false, href: 'http://google.com', onClick: null, onSelect: null }
 ];
 

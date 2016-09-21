@@ -5,36 +5,11 @@ import { Affix } from 'react-overlays';
 import CustomerProfile from '../widgets/CustomerProfile';
 import ActionBar from '../widgets/ActionBar';
 import Tasks from '../widgets/Tasks';
-import Card from '../widgets/Card';
 
 import DealerCard from '../widgets/DealerCard/DealerCard';
 import AppointmentsCard from '../widgets/AppointmentsCard/AppointmentsCard';
 
-const cardtestdata = [
-  {
-    label: 'AdditionalAction 1',
-    disabled: false,
-    divider: false,
-    header: false,
-  },
-  {
-    label: 'AdditionalAction 2',
-    disabled: false,
-    divider: false,
-    header: false,
-  }
-  ,
-  {
-    label: 'External Link Example',
-    disabled: false,
-    divider: false,
-    header: false,
-    href: 'http://google.com',
-  }
-];
-
 const CustomerRecord = ({customer, dealerTeam}) => {
-  debugger;
   return(
     <Grid className="customerrecord customerrecord__page">
 
@@ -52,11 +27,11 @@ const CustomerRecord = ({customer, dealerTeam}) => {
         {/* Cards */}
         <Row className="customerrecord__cards m-b-md">
           <Col lg={4} md={4} sm={4} xs={6}>
-            <AppointmentsCard appointments={customerinfo.Appointments}/>
+            <AppointmentsCard appointments={customer.appointments}/>
           </Col>
 
           <Col lg={4} md={4} sm={4} xs={6}>
-           <DealerCard dealerTeam={dealerTeam} teamRole="salesperson"/>
+            { /* <DealerCard dealerTeam={dealerTeam} teamRole="salesperson"/> */ }
           </Col>
 
           <Clearfix visibleXsBlock/>
@@ -91,7 +66,8 @@ CustomerRecord.propTypes = {
     ebr: PropTypes.bool,
     ebrExpressConsent: PropTypes.bool,
     memo: PropTypes.string
-  })
+  }),
+  dealerTeam: PropTypes.array
 };
 
 export default CustomerRecord;
