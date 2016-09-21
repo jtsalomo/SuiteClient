@@ -3,14 +3,14 @@ export const schema = {
   "properties": {
     "dealerTeam": {
       "type": "array",
-      "minItems": 10,
+      "minItems": 20,
       "maxItems": 20,
       "items": {
         "type": "object",
         "properties": {
           "id": {
             "type": "number",
-            "minimum": 0
+            "minimum": 1
           },
           "name": {
             "type": "string",
@@ -156,9 +156,55 @@ export const schema = {
             },
             "required": ['id', 'time', 'type', 'status', 'vehicle']
           }
-        }
+        },
+        "team": {
+          "type": "object",
+          "properties": {
+            "salesRepId": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 8
+            },
+            "splitSalesRepId": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 8
+            },
+            "managerId": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 8
+            },
+            "bdAgentId": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 8
+            },
+            "csiAgentId": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 8
+            },
+            "serviceSalesLeadId": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 8
+            },
+            "serviceRepId": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 8
+            },
+            "partsLeadId": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 8
+            },
+          }
+        },
+        "required": ['salesRepId', 'splitSalesRepId', 'managerId', 'bdAgentId', 'csiAgentId', 'serviceSalesLeadId', 'serviceRepId', 'partsLeadId']
       },
-      "required": ['id', 'photo', 'firstName', 'lastName', 'phone', 'email', 'address', 'ebr', 'ebrExpressConsent', 'memo', 'tasks', 'dealerTeam']
+      "required": ['id', 'photo', 'firstName', 'lastName', 'phone', 'email', 'address', 'ebr', 'ebrExpressConsent', 'memo', 'tasks', 'appointments', 'team']
     }
   },
   "required": ['appointments', 'dealerTeam', 'customer']
