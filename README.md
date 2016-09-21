@@ -100,3 +100,8 @@ Check out the [FAQ](/faq/FAQ.md)
 Additional information
 * nvm install -v6.6.0
 * apm install language-babel
+* npm init -y
+* npm install --save-dev eslint@3.5.0 eslint-config-airbnb@11.1.0 eslint-plugin-import@1.15.0 eslint-plugin-jsx-a11y@2.2.2 eslint-plugin-react@6.3.0
+echo '{ "extends": "airbnb" }' > .eslintrc
+echo "'foo';" > foo.js
+$(npm bin)/eslint .
