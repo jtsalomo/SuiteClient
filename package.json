@@ -1,11 +1,11 @@
 {
-  "name": "fusion-starter",
-  "version": "8.2.0",
-  "description": "Starter kit for creating React apps at Cox Automotive",
-  "homepage": "https://github.com/cox-auto-kc/fusion-starter",
+  "name": "suite-client",
+  "version": "0.1.0",
+  "description": "Suite Demo Project using Fusion",
+  "homepage": "https://github.com/TigerCox/suite-client",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cox-auto-kc/fusion-starter"
+    "url": "https://github.com/TigerCox/suite-client.git"
   },
   "engines": {
     "npm": ">=3"
@@ -14,7 +14,6 @@
   "license": "MIT",
   "scripts": {
     "preinstall": "node buildTools/nodeVersionCheck.js",
-    "remove-demo": "babel-node buildTools/removeDemo.js",
     "start-message": "babel-node buildTools/startMessage.js",
     "prestart": "npm-run-all --parallel start-message remove-dist",
     "start": "npm-run-all --parallel test:watch open:src lint:watch",
@@ -78,10 +77,11 @@
     "cross-env": "2.0.1",
     "css-loader": "0.24.0",
     "enzyme": "2.4.1",
-    "eslint": "3.4.0",
-    "eslint-plugin-import": "1.14.0",
-    "eslint-plugin-jsx-a11y": "2.2.0",
-    "eslint-plugin-react": "6.2.0",
+    "eslint": "3.5.0",
+    "eslint-config-airbnb": "11.1.0",
+    "eslint-plugin-import": "1.15.0",
+    "eslint-plugin-jsx-a11y": "2.2.2",
+    "eslint-plugin-react": "6.3.0",
     "eslint-watch": "2.1.14",
     "eventsource-polyfill": "0.9.6",
     "extract-text-webpack-plugin": "1.0.1",
@@ -121,5 +121,10 @@
   },
   "keywords:": [
     "fusion"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/cox-auto-kc/fusion-starter/issues"
+  },
+  "main": "webpack.config.dev.js",
+  "keywords": []
 }
