@@ -1,17 +1,7 @@
-// Fuel Savings
-export const SAVE_FUEL_SAVINGS = 'SAVE_FUEL_SAVINGS';
-export const CALCULATE_FUEL_SAVINGS = 'CALCULATE_FUEL_SAVINGS';
-
-// Customers
-export const RECEIVE_CUSTOMERS = 'RECEIVE_CUSTOMERS';
-
-// Loading
+// Loadings
 export const LOADING = 'LOADING';
 export const LOADING_COMPLETE = 'LOADING_COMPLETE';
 
 // Loading Indicator
 export const LOADING_INDICATOR_START = 'LOADING_INDICATOR_START';
 export const LOADING_INDICATOR_SET_PERCENT = 'LOADING_INDICATOR_SET_PERCENT';
-
-// Recent Posts
-export const SET_RECENT_POSTS = 'SET_RECENT_POSTS';
