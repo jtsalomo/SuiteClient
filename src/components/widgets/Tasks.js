@@ -28,6 +28,7 @@ class Tasks extends React.Component {
       addTaskVisible: false,
       tasksOpen: false
     };
+    this.taskItems = this.taskItems.bind(this);
   }
 
   toggleAddTask = () => {
@@ -54,22 +55,25 @@ class Tasks extends React.Component {
   taskItems(startIndex, limit) {
     let counter = 1;
     let index = startIndex;
-    while (counter < limit) {
-      const task = this.taskItems[index];
+    let tasks = [];
+    limit = limit || this.props.tasks.length;
+    while (counter <= limit) {
+      const task = this.props.tasks[index];
       if (!task) break;
-      <TaskItem
+      tasks.push(<TaskItem
         key={task.id}
-        leftIcon={this.getTaskIconComponent(task.type)}
-        primaryText= {task.primary}
-        secondaryText={task.secondary}
+        leftIcon={this.getTaskIcon(task.type)}
+        primaryText= {task.primaryText}
+        secondaryText={task.secondaryText}
         typeText={task.type}
         taskButtonlabel={task.btn}
         alert={task.alert}
-      />;
+      />);
       counter++;
       index++;
     }
-  }
+    return tasks;
+  };
 
   render(){
     const {className, tasks} = this.props;
@@ -87,11 +91,11 @@ class Tasks extends React.Component {
           <div className="tasks__taskList-container">
             <div className="tasks__taskList">
               <div className="tasks__taskList-initial">
-                { /* this.taskItems(0, 3) */ }
+                { this.taskItems(0, 3) }
               </div>
               <Collapse in={this.state.tasksOpen} className="tasks__taskList-overflow">
                 <div>
-                  { /* this.taskItems(3) */ }
+                  { this.taskItems(3) }
                 </div>
               </Collapse>
             </div>
