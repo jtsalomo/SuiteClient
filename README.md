@@ -91,3 +91,12 @@ The api configuration example (in /src/api/api.js) assumes that you're running V
 
 ## Questions?
 Check out the [FAQ](/faq/FAQ.md)
+
+
+
+
+
+
+Additional information
+* nvm install -v6.6.0
+* apm install language-babel
