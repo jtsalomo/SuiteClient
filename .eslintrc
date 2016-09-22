@@ -77,10 +77,10 @@
     "react/prefer-stateless-function": 1,
     "react/prop-types": 1,
     "react/react-in-jsx-scope": 1,
-    "react/require-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/require-extension": [0, { "extensions": [".js", ".jsx"] }],
     "react/self-closing-comp": 1,
     "react/sort-comp": 1,
-    "react/wrap-multilines": 1,
+    "react/wrap-multilines": 0,
     "jsx-a11y/img-has-alt": [ 1, ["Image", "Thumbnail"]],
     "jsx-a11y/label-has-for": 1,
     "jsx-a11y/no-onchange": 1
