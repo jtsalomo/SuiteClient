@@ -20,9 +20,6 @@ class FDShort extends React.Component {
     super(props);
     this.onChange = this.onChange.bind(this);
     this.getValidationState = this.getValidationState.bind(this);
-    this.state = {
-      applicant: this.props.applicant,
-    }
   }
 
   createId(id, includeWithNoBaseId = true) {
@@ -48,16 +45,15 @@ class FDShort extends React.Component {
   }
 
   render() {
-    console.log('render');
     return (
       <div id='FinanceDriverShort' className='FinanceDriver FinanceDriverShort'>
         <form>
           <FieldGroup id={this.createId('FinanceDriverShort.Name.First')} label='First Name' className='Name FirstName' type='text' help='Your First Name, dumbo!'
-            value={this.state.applicant.name.first} onChange={(e) => this.onChange(e, 'firstName')} validation={this.getValidationState('firstName')} />
+            value={this.props.applicant.name.first} onChange={(e) => this.onChange(e, 'firstName')} validation={this.getValidationState('firstName')} />
           <FieldGroup id={this.createId('FinanceDriverShort.Name.Middle')} label='Middle Name' className='Name MiddleName' type='text'
-            value={this.state.applicant.name.first} onChange={(e) => this.onChange(e, 'middleName')} validation={this.getValidationState('middleName')} />
+            value={this.props.applicant.name.first} onChange={(e) => this.onChange(e, 'middleName')} validation={this.getValidationState('middleName')} />
           <FieldGroup id={this.createId('FinanceDriverShort.Name.Last')} label='Last Name' className='Name LastName' type='text'
-            value={this.state.applicant.name.first} onChange={(e) => this.onChange(e, 'lastName')} validation={this.getValidationState('lastName')} />
+            value={this.props.applicant.name.first} onChange={(e) => this.onChange(e, 'lastName')} validation={this.getValidationState('lastName')} />
         </form>
       </div>
     );
@@ -77,7 +73,6 @@ FDShort.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     applicant: state.applicant,
     firstName: state.applicant.name.first
@@ -85,7 +80,6 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  console.log(dispatch);
   return {
     onFirstNameChange: (firstName) => {
       dispatch(setApplicantFirstName(firstName));

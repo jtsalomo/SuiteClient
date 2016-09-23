@@ -2,7 +2,7 @@
   "presets": ["react", "latest", "stage-2"],
   "env": {
     "development": {
-      "presets": ["react-hmre"],
+      "presets": ["react-hmre"]
     },
     "production": {
       "plugins": [
