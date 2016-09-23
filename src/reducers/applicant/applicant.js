@@ -1,32 +1,43 @@
 import {APPLICANT_SET_NAME, APPLICANT_SET_CONTACT, APPLICANT_SET_ADDRESS} from '../../actions/applicant/applicantActionTypes';
 import initialState from '../initialState';
 
+const getValue = (state, action, section, name, defaultValue = '') => {
+  if (!action || !action[section] || action[section][name] === undefined || action[section][name] === null) {
+    return state && state[section] && state[section][name] || defaultValue;
+  } else {
+    return action && action[section] && action[section][name] || defaultValue;
+  }
+};
+
 const applicant = (state = initialState.applicant, action) => {
+  if (!action || !action.type) {
+    return state;
+  }
   switch (action.type) {
     case APPLICANT_SET_NAME:
       return Object.assign({}, state, {
         name: {
-          first: (action && action.name && action.name.first) || (state && state.name && state.name.first),
-          middle: (action && action.name && action.name.middle) || (state && state.name && state.name.middle),
-          last: (action && action.name && action.name.last) || (state && state.name && state.name.last),
-          suffix: (action && action.name && action.name.suffix) || (state && state.name && state.name.suffix)
+          first: getValue(state, action, 'name', 'first'),
+          middle: getValue(state, action, 'name', 'middle'),
+          last: getValue(state, action, 'name', 'last'),
+          suffix: getValue(state, action, 'name', 'suffix'),
         }
       });
     case APPLICANT_SET_CONTACT:
       return Object.assign({}, state, {
-        contact: {
-          phone: (action && action.contact && action.contact.phone) || (state && state.contact && state.contact.phone),
-          email: (action && action.contact && action.contact.phone) || (state && state.contact && state.contact.phone)
+        name: {
+          phone: getValue(state, action, 'contact', 'phone'),
+          email: getValue(state, action, 'contact', 'email')
         }
       });
     case APPLICANT_SET_ADDRESS:
       return Object.assign({}, state, {
         address: {
-          line1: (action && action.contact && action.contact.line1) || (state && state.contact && state.contact.line1),
-          line2: (action && action.contact && action.contact.line2) || (state && state.contact && state.contact.line2),
-          city: (action && action.contact && action.contact.city) || (state && state.contact && state.contact.city),
-          state: (action && action.contact && action.contact.state) || (state && state.contact && state.contact.state),
-          zip: (action && action.contact && action.contact.zip) || (state && state.contact && state.contact.zip)
+          line1: getValue(state, action, 'address', 'line1'),
+          line2: getValue(state, action, 'address', 'line2'),
+          city: getValue(state, action, 'address', 'city'),
+          state: getValue(state, action, 'address', 'state'),
+          zip: getValue(state, action, 'address', 'zip')
         }
       });
     default:

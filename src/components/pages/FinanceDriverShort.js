@@ -3,23 +3,12 @@ import { connect } from 'react-redux';
 
 import { setApplicantName } from '../../actions/applicant/applicantActions';
 
-import { FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
+import FieldGroup from '../widgets/FieldGroup';
 
-const ROOT_ID = 'financeDriverShort';
-const APPLICANT_FIRST_NAME = 'applicant.name.first';
-const APPLICANT_MIDDLE_NAME = 'applicant.name.middle';
-const APPLICANT_LAST_NAME = 'applicant.name.last';
-
-
-const FieldGroup = ({ id, label, className, validation, ...props }) => {
-  return (
-    <FormGroup className={className} controlId={id} validationState={validation === null ? null : validation === "" ? "success" : "error"}>
-      <ControlLabel>{label}</ControlLabel>
-      <FormControl {...props} />
-      {validation && <HelpBlock>{validation}</HelpBlock>}
-    </FormGroup>
-  );
-};
+const ROOT_ID = {id: 'financeDriverShort', class: 'FinanceDriver FinanceDriverShort'};
+const APPLICANT_FIRST_NAME = {id: 'applicant.name.first', label: 'First Name', class: 'Name FirstName', func: 'onFirstNameChange', isRequired: true};
+const APPLICANT_MIDDLE_NAME = {id: 'applicant.name.middle', label: 'Middle Name', class: 'Name MiddleName', func: 'onMiddleNameChange', isRequired: true};
+const APPLICANT_LAST_NAME = {id: 'applicant.name.last', label: 'Last Name', class: 'Name LastName', func: 'onLastNameChange', isRequired: true};
 
 class FDShort extends React.Component {
   constructor(props) {
@@ -37,86 +26,68 @@ class FDShort extends React.Component {
   }
 
   getValue(type) {
-    return this.props[type];
+    return this.props[type.id];
   }
 
   setValue(type, value) {
     this.setState(type, true);
-    switch(type) {
-      case APPLICANT_FIRST_NAME:
-        this.props.onFirstNameChange(value);
-        break;
-      case APPLICANT_MIDDLE_NAME:
-        this.props.onMiddleNameChange(value);
-        break;
-      case APPLICANT_LAST_NAME:
-        this.props.onLastNameChange(value);
-        break;
-    }
+    this.props[type.func](value);
   }
 
   getState(type) {
-    return this.state[type];
+    return this.state[type.id];
   }
 
   setState(type, value) {
-    super.setState({ [type]: value });
+    super.setState({ [type.id]: value });
   }
 
   validate(type) {
-    switch(type) {
-      case APPLICANT_FIRST_NAME:
-      case APPLICANT_MIDDLE_NAME:
-      case APPLICANT_LAST_NAME:
-        return this.getState(type) === undefined ? null : this.getValue(type).length < 1 ? "Field is required" : "";
-    }
+    return this.getState(type) === undefined ? null : (type.isRequired && this.getValue(type).length < 1) ? type.label + " is required" : "";
   }
 
   render() {
     return (
-      <div id={ROOT_ID} className='FinanceDriver FinanceDriverShort'>
+      <div id={ROOT_ID.id} className={ROOT_ID.class}>
         <form>
-          <FieldGroup id={this.createId(ROOT_ID, APPLICANT_FIRST_NAME)} label='First Name' className='Name FirstName' type='text'
-            value={this.getValue(APPLICANT_FIRST_NAME)} onChange={(e) => this.setValue(APPLICANT_FIRST_NAME, e.target.value)} validation={this.validate(APPLICANT_FIRST_NAME)} />
-          <FieldGroup id={this.createId(ROOT_ID, APPLICANT_MIDDLE_NAME)} label='Middle Name' className='Name MiddleName' type='text'
-            value={this.getValue(APPLICANT_MIDDLE_NAME)} onChange={(e) => this.setValue(APPLICANT_MIDDLE_NAME, e.target.value)} validation={this.validate(APPLICANT_MIDDLE_NAME)} />
-          <FieldGroup id={this.createId(ROOT_ID, APPLICANT_LAST_NAME)} label='Last Name' className='Name LastName' type='text'
-            value={this.getValue(APPLICANT_LAST_NAME)} onChange={(e) => this.setValue(APPLICANT_LAST_NAME, e.target.value)} validation={this.validate(APPLICANT_LAST_NAME)} />
+          <FieldGroup id={this.createId(ROOT_ID.id, APPLICANT_FIRST_NAME.id)} label={APPLICANT_FIRST_NAME.label} className={APPLICANT_FIRST_NAME.class} type='text'
+            value={this.getValue(APPLICANT_FIRST_NAME)} onChange={(e) => this.setValue(APPLICANT_FIRST_NAME, e.target.value)} onBlur={(e) => this.setState(APPLICANT_FIRST_NAME, true)} validation={this.validate(APPLICANT_FIRST_NAME)} />
+          <FieldGroup id={this.createId(ROOT_ID.id, APPLICANT_MIDDLE_NAME.id)} label={APPLICANT_MIDDLE_NAME.label} className={APPLICANT_MIDDLE_NAME.class} type='text'
+            value={this.getValue(APPLICANT_MIDDLE_NAME)} onChange={(e) => this.setValue(APPLICANT_MIDDLE_NAME, e.target.value)} onBlur={(e) => this.setState(APPLICANT_MIDDLE_NAME, true)} validation={this.validate(APPLICANT_MIDDLE_NAME)} />
+          <FieldGroup id={this.createId(ROOT_ID.id, APPLICANT_LAST_NAME.id)} label={APPLICANT_LAST_NAME.label} className={APPLICANT_LAST_NAME.class} type='text'
+            value={this.getValue(APPLICANT_LAST_NAME)} onChange={(e) => this.setValue(APPLICANT_LAST_NAME, e.target.value)} onBlur={(e) => this.setState(APPLICANT_LAST_NAME, true)} validation={this.validate(APPLICANT_LAST_NAME)} />
         </form>
       </div>
     );
   }
 }
 
-
-
 FDShort.propTypes = {
-  id: PropTypes.string,
-  [APPLICANT_FIRST_NAME]: PropTypes.string,
-  [APPLICANT_MIDDLE_NAME]: PropTypes.string,
-  [APPLICANT_LAST_NAME]: PropTypes.string,
-  onFirstNameChange: PropTypes.func,
-  onMiddleNameChange: PropTypes.func,
-  onLastNameChange: PropTypes.func
+  [APPLICANT_FIRST_NAME.id]: PropTypes.string.isRequired,
+  [APPLICANT_MIDDLE_NAME.id]: PropTypes.string.isRequired,
+  [APPLICANT_LAST_NAME.id]: PropTypes.string.isRequired,
+  [APPLICANT_FIRST_NAME.func]: PropTypes.func.isRequired,
+  [APPLICANT_MIDDLE_NAME.func]: PropTypes.func.isRequired,
+  [APPLICANT_LAST_NAME.func]: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
   return {
-    [APPLICANT_FIRST_NAME]: state.applicant.name.first,
-    [APPLICANT_MIDDLE_NAME]: state.applicant.name.middle,
-    [APPLICANT_LAST_NAME]: state.applicant.name.last,
+    [APPLICANT_FIRST_NAME.id]: state.applicant.name.first,
+    [APPLICANT_MIDDLE_NAME.id]: state.applicant.name.middle,
+    [APPLICANT_LAST_NAME.id]: state.applicant.name.last,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onFirstNameChange: (firstName) => {
+    [APPLICANT_FIRST_NAME.func]: (firstName) => {
       dispatch(setApplicantName({ first: firstName }));
     },
-    onMiddleNameChange: (middleName) => {
+    [APPLICANT_MIDDLE_NAME.func]: (middleName) => {
       dispatch(setApplicantName({ middle: middleName }));
     },
-    onLastNameChange: (lastName) => {
+    [APPLICANT_LAST_NAME.func]: (lastName) => {
       dispatch(setApplicantName({ last: lastName }));
     }
   };
