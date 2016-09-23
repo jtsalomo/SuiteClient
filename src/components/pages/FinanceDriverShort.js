@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import { connect } from 'react-redux';
 
-import { setApplicantFirstName } from '../../actions/applicant/applicantActions';
+import { setApplicantName } from '../../actions/applicant/applicantActions';
 
 import { FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 
@@ -49,7 +49,7 @@ class FDShort extends React.Component {
       <div id='FinanceDriverShort' className='FinanceDriver FinanceDriverShort'>
         <form>
           <FieldGroup id={this.createId('FinanceDriverShort.Name.First')} label='First Name' className='Name FirstName' type='text' help='Your First Name, dumbo!'
-            value={this.props.applicant.name.first} onChange={(e) => this.onChange(e, 'firstName')} validation={this.getValidationState('firstName')} />
+            value={this.props.applicant.name.first} onChange={(e) => this.props.onFirstNameChange(e.target.value)} validation={this.getValidationState('firstName')} />
           <FieldGroup id={this.createId('FinanceDriverShort.Name.Middle')} label='Middle Name' className='Name MiddleName' type='text'
             value={this.props.applicant.name.first} onChange={(e) => this.onChange(e, 'middleName')} validation={this.getValidationState('middleName')} />
           <FieldGroup id={this.createId('FinanceDriverShort.Name.Last')} label='Last Name' className='Name LastName' type='text'
@@ -82,7 +82,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onFirstNameChange: (firstName) => {
-      dispatch(setApplicantFirstName(firstName));
+      dispatch(setApplicantName({ first: firstName }));
     }
   };
 };

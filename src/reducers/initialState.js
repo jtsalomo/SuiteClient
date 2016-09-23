@@ -9,7 +9,21 @@ export default {
   },
   applicant: {
     name: {
-      first: 'Joe'
+      first: '',
+      middle: '',
+      last: '',
+      suffix: ''
+    },
+    contact: {
+      phone: '',
+      email: '',
+    },
+    address: {
+      line1: '',
+      line2: '',
+      city: '',
+      state: '',
+      zip: '',
     }
   }
 };
