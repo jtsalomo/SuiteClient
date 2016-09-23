@@ -6,5 +6,10 @@ export default {
   loadingIndicatorStatus: {
     percent: -1,
     intervalTime: 200
+  },
+  applicant: {
+    name: {
+      first: 'Joe'
+    }
   }
 };
