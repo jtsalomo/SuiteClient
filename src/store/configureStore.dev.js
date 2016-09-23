@@ -2,8 +2,8 @@
 // This boilerplate file is likely to be the same for each project that uses Redux.
 // With Redux, the actual stores are in /reducers.
 import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from '../reducers';
 import thunk from 'redux-thunk';
+import reducer from '../reducers';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 
 // Without middleware, Redux only supports synchronous data flow. http://redux.js.org/docs/advanced/AsyncFlow.html
@@ -13,7 +13,7 @@ import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 // Thunk middleware lets us dispatch() functions, (useful for handling ajax calls in reducers)
 export default function configureStore(initialState) {
   const store = createStore(
-    rootReducer,
+    reducer,
     initialState,
     compose(
       applyMiddleware(thunk, reduxImmutableStateInvariant()),
