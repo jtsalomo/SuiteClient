@@ -7,7 +7,7 @@ import { submitFinanceDriverShort } from '../../actions/generalActions';
 
 import FieldGroup from '../widgets/FieldGroup';
 
-import '../../styles/FinanceDriverShort.scss';
+import '../../styles/FinanceDriverShort';
 
 const ROOT = {id: 'financeDriverShort', class: 'FinanceDriver FinanceDriverShort'};
 const APPLICANT = {id: 'financeDriverShort.applicant', class: 'Applicant'};

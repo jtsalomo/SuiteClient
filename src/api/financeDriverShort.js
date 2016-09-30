@@ -22,8 +22,8 @@ const submissionTemplate = (applicant) => {
         "City": applicant.address.city,
         "State": applicant.address.state,
         "ZipCode": applicant.address.zip,
-        "TotalMonthsEmployed": "" + parseInt(applicant.employment.lengthAtJob) * 12,
-        "MonthlyIncome": parseInt(applicant.employment.income)
+        "TotalMonthsEmployed": "" + parseInt(applicant.employment.lengthAtJob, 10) * 12,
+        "MonthlyIncome": parseInt(applicant.employment.income, 10)
       },
       "ConsentIndicator":true,
       "PrivacyNotice":true

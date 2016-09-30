@@ -1,10 +1,14 @@
+@mixin flexChild($margin) {
+  flex: 1;
+  margin: 0 $margin;
+}
+
 .FinanceDriverShort .Name {
   display: flex;
 }
 
 .FinanceDriverShort .Name > * {
-  flex: 1;
-  margin: 0 5px;
+  @include flexChild(5px);
 }
 
 .FinanceDriverShort .Email {
@@ -12,17 +16,17 @@
 }
 
 .FinanceDriverShort .Email > * {
-  flex: 1;
-  margin: 0 5px;
+  @include flexChild(5px);
 }
 
 .FinanceDriverShort .Submit {
-  text-align: center;
+  text-align: $text-align;
   padding: 15px;
   margin: auto;
-  background: blue;
   color: white;
-  font-weight: bold;
-  font-size: 1.5em;
+  font: {
+    weight: bold;
+    size: 1.5em;
+  }
   cursor: pointer;
 }
